@@ -91,7 +91,7 @@ wire    	apb3Interrupt;
 
 /////////////////////////////////////////////////////////////////////////////
 //Reset and PLL
-assign mcuReset 	= ~(my_pll_locked );
+assign mcuReset 	= ~( io_asyncReset & my_pll_locked );
 assign my_pll_rstn 	= 1'b1;
 //I2C
 assign system_i2c_0_io_sda_writeEnable = !system_i2c_0_io_sda_write;

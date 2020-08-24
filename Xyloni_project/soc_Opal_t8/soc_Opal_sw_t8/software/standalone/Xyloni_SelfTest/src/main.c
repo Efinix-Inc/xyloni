@@ -10,7 +10,7 @@
 
 #define LED_MASK	0x0F
 
-#define BTN1		0x4000
+//#define BTN1		0x4000
 #define BTN2		0x8000
 
 void main() {
@@ -30,19 +30,22 @@ void main() {
 
     bsp_putString("==========Xyloni Test Menu===========\n\n\r");
 
-    bsp_putString("---Press BTN1 - INVERT LED BLINK\n\r");
-    bsp_putString("---Press BTN2 - READ SD CARD INFO\n\r");
+    bsp_putString("---Press BTN1 On Board - INVERT LED BLINK\n\r");
+    bsp_putString("---Press KeyBoard any Key - READ SD CARD INFO\n\r");
 
     while(1){
 
     	mask=gpio_getInput(BSP_LED_GPIO);
 
-    	if((mask & BTN1)==0){
+    	if((mask & BTN2)==0){
     		invert = (~invert) & 0x01;
     	}
 
-    	if((mask & BTN2)==0)
-    		Spi_Read_SDCard_Info();
+    	 while(uart_readOccupancy(BSP_UART_TERMINAL)){
+    	            uart_write(BSP_UART_TERMINAL, uart_read(BSP_UART_TERMINAL));
+    	            Spi_Read_SDCard_Info();
+    	 }
+
 
     	for(n=0;n<4;n++)
     	{

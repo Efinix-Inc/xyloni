@@ -1,1 +1,19 @@
-# xyloni
+# Xyloni T8 Development Kit User Guide
+
+-   [Introduction](topics/xyloni-ug-overview.html)
+    -   [What's in the Box?](topics/xyloni-ug-in-the-box.html)
+    -   [Register Your Kit](topics/register_dev_kit.html)
+    -   [Download the Efinity Software](topics/concept_software_requirements.html)
+-   [Board Functional Description](topics/xyloni-ug-fd.html)
+    -   [Features](topics/xyloni-ug-features.html)
+    -   [Overview](topics/xyloni-ug-fd-overview.html)
+    -   [Power On](topics/xyloni-ug-power-on.html)
+    -   [Reset](topics/xyloni-ug-reset.html)
+    -   [Clock Sources](topics/xyloni-ug-clock.html)
+    -   [Configuration](topics/ref_config_xyloni.html)
+    -   [Headers](topics/xyloni-ug-headers.html)
+    -   [User Outputs](topics/xyloni-ug-user-ouputs.html)
+    -   [User Inputs](topics/xyloni-ug-user-input.html)
+-   [Running the Demonstration Design](topics/xyloni_run_demo_design.html)
+-   [Creating Your Own Design](topics/xyloni-ug-creating-own-design.html)
+-   [Revision History](topics/rev-xyloni-ug.html)

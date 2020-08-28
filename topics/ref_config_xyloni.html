@@ -1,0 +1,15 @@
+# Configuration
+
+The Xyloni® Development Kit supports three different configuration modes: SPI passive mode, SPI active mode, and JTAG mode.
+
+In SPI active and passive mode, you can choose which image to load from the SPI flash by pulling the `CBSEL0` and `CBSEL1` pins high or low.
+
+|CBSEL0|CBSEL1|Notes|
+|:----:|:----:|-----|
+|High|Low|Load configuration image 0.|
+|Low|High|Load configuration image 1.|
+
+**Note:** For more details on configuration, refer to [AN 006: Configuring Trion FPGAs](https://www.efinixinc.com/support/docsdl.php?s=ef&pn=AN006).
+
+**Parent topic:**[Board Functional Description](../topics/xyloni-ug-fd.html)
+

@@ -1,0 +1,20 @@
+# Overview
+
+The board features the Efinix® T8 programmable device in a 81-ball FBGA package, which is fabricated using Efinix® Quantum™ technology. The Quantum™-accelerated programmable logic and routing fabric is wrapped with an I/O interface in a small footprint package. T8 devices also include embedded memory blocks and multiplier blocks \(or DSP blocks\). You create designs for the T8 device in the Efinity® software, and then download the resulting configuration bitstream to the board using the USB connection.
+
+**Note:** For more information on T8 FPGAs, refer to the [T8 Data Sheet](https://www.efinixinc.com/support/docsdl.php?s=ef&pn=DST8).
+
+
+
+
+
+The FTDI FT4232H module has two channels to support SPI \(FTDI interface 0\) and JTAG \(FTDI interface 1\) configuration. It receives the T8 configuration bitstream from a USB host and writes to the on-board SPI NOR flash memory. After a reset in SPI passive mode, the FTDI controller can also write the configuration bitstream directly to the FPGA. Additionally, it supports direct JTAG programming mode in which it writes the configuration bitstream directly to the FPGA through the JTAG interface.
+
+**Note:** Refer to [AN 006 Configuring Trion FPGAs](https://www.efinixinc.com/support/docsdl.php?s=ef&pn=AN006) for more information.
+
+The SPI NOR flash memory stores the configuration bitstream it receives from the FTDI FT4232H module. The T8 device accesses this configuration bitstream when it is in active configuration mode \(default\).
+
+The board regulates down the 5 V DC input using on-board switching regulators to provide the necessary voltages for the T8 device, PMOD module, SPI flash memory, and on-board oscillator.
+
+**Parent topic:**[Board Functional Description](../topics/xyloni-ug-fd.html)
+

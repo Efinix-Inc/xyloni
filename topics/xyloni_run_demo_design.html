@@ -1,0 +1,44 @@
+# Running the Demonstration Design
+
+Efinix® preloads the Xyloni® Development Board with a demonstration design with two features, LED operation and reading the SD card information. The read SD card information feature requires a terminal software in a computer to display the information.
+
+
+
+Follow these steps to run the LED operation feature:
+
+1.  Connect the USB cable to the board and to your computer. LED PWR \(PWR OK\) turns on, indicating that the board is receiving power correctly. When configuration completes, the configuration done \(LED CDN\) turns on. The LEDs turn on sequentially from LED1 to LED4.
+
+    **Note:** If LED PWR does not turn off, the board is not receiving power correctly.
+
+2.  Press pushbutton BTN1 to invert the LEDs. The LEDs turn off sequentially from LED1 to LED4.
+
+Follow these steps to read the SD card information:
+
+1.  Connect the USB cable to the board and to your computer. LED PWR \(PWR OK\) turns on, indicating that the board is receiving power correctly. When configuration completes, the configuration done \(LED CDN\) turns on. The LEDs turn on sequentially from LED1 to LED4.
+
+    **Note:** If LED PWR does not turn off, the board is not receiving power correctly.
+
+2.  Open a terminal software on the computer. You can use any Windows or Linux terminal applications such as, PuTTY, Tera Term, Minicom, and others.
+3.  Select the com\[2\] port of UART connection in the terminal. Example:
+    1.  In Windows, if the terminal shows com30 com31 com32 com33, select com32.
+    2.  In Linux, if the terminal shows ttyUSB0 ttyUSB1 ttyUSB2 ttyUSB3, select USB2.
+4.  Press CRST pushbutton. The terminal displays the following test menu:
+
+    ```
+    ==========Xyloni Test Menu==========
+    ---Press BTN1 - INVERT LED BLINK
+    ---Press BTN2 - READ SD CARD INFO
+    ```
+
+5.  Press pushbutton BTN2, and the terminal displays the following SD card information. Example:
+
+    ```
+    =========SD Card Info=========
+    
+    Manufacturer ID    : 3
+    Type               : Hard disk file system
+    TRAN_SPEED         : 10Mbit/s
+    SD CARD Size       : 15218 MByte
+    ```
+
+

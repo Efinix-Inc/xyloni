@@ -1,0 +1,3 @@
+[submodule "design/ip"]
+	path = design/ip
+	url = https://github.com/github-efx/ip.git

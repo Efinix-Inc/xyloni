@@ -1,0 +1,195 @@
+{
+    "debug_cores": [
+        {
+            "name": "vio0",
+            "type": "vio",
+            "uuid": "7fca82a0082340f29106597966e59361",
+            "probes": [
+                {
+                    "name": "on",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "off",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "trigger",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "mode",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "en",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "we",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "re",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "rgb",
+                    "width": 24,
+                    "init": "0x0"
+                },
+                {
+                    "name": "pix",
+                    "width": 9,
+                    "init": "0x1df"
+                },
+                {
+                    "name": "state",
+                    "width": 4,
+                    "init": null
+                },
+                {
+                    "name": "next",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "back",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "interrupt",
+                    "width": 1,
+                    "init": "0x0"
+                }
+            ]
+        },
+        {
+            "name": "la0",
+            "type": "la",
+            "uuid": "dcd83912d7504077b193205f4503b343",
+            "probes": [
+                {
+                    "name": "csx",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "dcx",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "wrx",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "rdx",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "o_d",
+                    "width": 24,
+                    "probe_type": 1
+                },
+                {
+                    "name": "oe",
+                    "width": 24,
+                    "probe_type": 1
+                },
+                {
+                    "name": "i_d",
+                    "width": 24,
+                    "probe_type": 1
+                },
+                {
+                    "name": "state",
+                    "width": 4,
+                    "probe_type": 1
+                },
+                {
+                    "name": "x",
+                    "width": 9,
+                    "probe_type": 1
+                },
+                {
+                    "name": "y",
+                    "width": 10,
+                    "probe_type": 1
+                },
+                {
+                    "name": "fsm_status",
+                    "width": 5,
+                    "probe_type": 1
+                },
+                {
+                    "name": "spi_status",
+                    "width": 3,
+                    "probe_type": 1
+                },
+                {
+                    "name": "sos_status",
+                    "width": 2,
+                    "probe_type": 1
+                },
+                {
+                    "name": "scan_state",
+                    "width": 3,
+                    "probe_type": 1
+                },
+                {
+                    "name": "Y_lb_we",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "U_lb_we",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "V_lb_we",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "lb_full",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "lb_nempty",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "trigger",
+                    "width": 1,
+                    "probe_type": 1
+                }
+            ],
+            "data_depth": 2048,
+            "trigin_en": false,
+            "trigout_en": false,
+            "capture_control": false,
+            "auto_inserted": false,
+            "num_window": 1,
+            "window_depth": 1024,
+            "trig_pos": 512.0
+        }
+    ],
+    "session": {
+        "debug_widget": [],
+        "wizard": {}
+    }
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<efx:project name="jpeg_viewer" description="" last_change_date="Fri September 4 2020 16:18:42" location="/home/alfredw_local/github/xyloni/design/jpeg_viewer/efinity" sw_version="2020.1.140.3.6" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="true" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+    <efx:device_info>
+        <efx:family name="Trion"/>
+        <efx:device name="T8F81"/>
+        <efx:timing_model name="C2"/>
+    </efx:device_info>
+    <efx:design_info def_veri_version="verilog_2k" def_vhdl_version="vhdl_2008">
+        <efx:top_module name="jpeg_viewer"/>
+        <efx:design_file name="../rtl/entropy_decoder.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/sos_parser.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/jfif_parser.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/jpeg_decoder.v" version="verilog_2k"/>
+        <efx:design_file name="../../ip/memory/rtl/simple_dual_port_ram.v" version="verilog_2k"/>
+        <efx:design_file name="../../ip/memory/rtl/true_dual_port_ram.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/zigzag_to_matrix.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/runlength_shifter.v" version="verilog_2k"/>
+        <efx:design_file name="../../ip/mult.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/dct.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/dq_idct.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/accumulator.v" version="verilog_2k"/>
+        <efx:design_file name="../../ip/shift_reg.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/subsampling.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/line_buffer.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/yuv_to_rgb.v" version="verilog_2k"/>
+        <efx:design_file name="../rtl/jpeg_viewer.v" version="verilog_2k"/>
+        <efx:design_file name="../../ip/asmi_flash_controller-v1.1/source/efx_spi_shifter.v" version="default"/>
+        <efx:design_file name="../rtl/spi_controller.v" version="default"/>
+        <efx:design_file name="../../ip/reset.v" version="default"/>
+        <efx:design_file name="../../ip/memory/rtl/dual_clock_fifo.v" version="default"/>
+        <efx:design_file name="../rtl/mpu_interface.v" version="default"/>
+        <efx:design_file name="debug_top.v" version="default"/>
+        <efx:design_file name="../rtl/nt35510_reg.v" version="default"/>
+        <efx:design_file name="../../ip/pwm/pwm.v" version="default"/>
+        <efx:top_vhdl_arch name=""/>
+    </efx:design_info>
+    <efx:constraint_info>
+        <efx:sdc_file name="jpeg_viewer.pt.sdc"/>
+        <efx:inter_file name=""/>
+    </efx:constraint_info>
+    <efx:sim_info/>
+    <efx:misc_info/>
+    <efx:synthesis tool_name="efx_map">
+        <efx:param name="work_dir" value="work_syn" value_type="e_string"/>
+        <efx:param name="write_efx_verilog" value="on" value_type="e_bool"/>
+        <efx:param name="mode" value="speed" value_type="e_option"/>
+        <efx:param name="max_ram" value="-1" value_type="e_integer"/>
+        <efx:param name="max_mult" value="8" value_type="e_integer"/>
+        <efx:param name="infer-clk-enable" value="3" value_type="e_option"/>
+        <efx:param name="infer-sync-set-reset" value="1" value_type="e_option"/>
+        <efx:param name="fanout-limit" value="0" value_type="e_integer"/>
+        <efx:param name="seq_opt" value="0" value_type="e_option"/>
+    </efx:synthesis>
+    <efx:place_and_route tool_name="efx_pnr">
+        <efx:param name="work_dir" value="work_pnr" value_type="e_string"/>
+        <efx:param name="verbose" value="off" value_type="e_bool"/>
+        <efx:param name="load_delaym" value="on" value_type="e_bool"/>
+        <efx:param name="optimization_level" value="NULL" value_type="e_option"/>
+        <efx:param name="qp_options=anneal_random_seed=" value="1" value_type="e_integer"/>
+    </efx:place_and_route>
+    <efx:bitstream_generation tool_name="efx_pgm">
+        <efx:param name="mode" value="active" value_type="e_option"/>
+        <efx:param name="width" value="1" value_type="e_option"/>
+        <efx:param name="cold_boot" value="off" value_type="e_bool"/>
+        <efx:param name="cascade" value="off" value_type="e_option"/>
+        <efx:param name="enable_roms" value="on" value_type="e_option"/>
+        <efx:param name="spi_low_power_mode" value="on" value_type="e_bool"/>
+        <efx:param name="io_weak_pullup" value="on" value_type="e_bool"/>
+        <efx:param name="oscillator_clock_divider" value="DIV8" value_type="e_option"/>
+        <efx:param name="enable_crc_check" value="on" value_type="e_bool"/>
+    </efx:bitstream_generation>
+    <efx:debugger>
+        <efx:param name="work_dir" value="work_dbg" value_type="e_string"/>
+        <efx:param name="auto_instantiation" value="off" value_type="e_bool"/>
+        <efx:param name="profile" value="NONE" value_type="e_string"/>
+    </efx:debugger>
+</efx:project>

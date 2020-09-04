@@ -1,0 +1,150 @@
+{
+    "debug_cores": [
+        {
+            "name": "vio0",
+            "type": "vio",
+            "uuid": "2167cbd3d9c9417d9a53109617738661",
+            "probes": [
+                {
+                    "name": "on",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "off",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "hres",
+                    "width": 9,
+                    "init": "0x1df"
+                },
+                {
+                    "name": "vres",
+                    "width": 10,
+                    "init": "0x31f"
+                },
+                {
+                    "name": "hpix",
+                    "width": 9,
+                    "init": "0x0"
+                },
+                {
+                    "name": "en",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "mode",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "we",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "re",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "rgb",
+                    "width": 24,
+                    "init": "0x0"
+                },
+                {
+                    "name": "state",
+                    "width": 4,
+                    "init": null
+                },
+                {
+                    "name": "next",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "back",
+                    "width": 1,
+                    "init": "0x0"
+                },
+                {
+                    "name": "interrupt",
+                    "width": 1,
+                    "init": "0x0"
+                }
+            ]
+        },
+        {
+            "name": "la0",
+            "type": "la",
+            "uuid": "bc039df01aca4bb199b3be027446ac33",
+            "probes": [
+                {
+                    "name": "csx",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "dcx",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "wrx",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "rdx",
+                    "width": 1,
+                    "probe_type": 1
+                },
+                {
+                    "name": "o_d",
+                    "width": 24,
+                    "probe_type": 1
+                },
+                {
+                    "name": "oe",
+                    "width": 24,
+                    "probe_type": 1
+                },
+                {
+                    "name": "i_d",
+                    "width": 24,
+                    "probe_type": 1
+                },
+                {
+                    "name": "state",
+                    "width": 4,
+                    "probe_type": 1
+                },
+                {
+                    "name": "x",
+                    "width": 9,
+                    "probe_type": 1
+                },
+                {
+                    "name": "y",
+                    "width": 10,
+                    "probe_type": 1
+                }
+            ],
+            "data_depth": 4096,
+            "trigin_en": false,
+            "trigout_en": false,
+            "capture_control": false,
+            "auto_inserted": false,
+            "num_window": 1,
+            "window_depth": 1024,
+            "trig_pos": 512.0
+        }
+    ],
+    "session": {
+        "debug_widget": [],
+        "wizard": {}
+    }
+}

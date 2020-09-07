@@ -28,7 +28,15 @@ Ideal for applications that require embedded compute capability such as system m
 
 ```
 ├── soc_Opal_hw                  -- Root
-│   ├── soc_Opal_hw_t8           -- RiscV Soc Hardware design
-│   ├── soc_Opal_sw_t8           -- RiscV Barematel firmware design
-│   └── README.md                -- Read me
+   ├── soc_Opal_hw_t8           -- RiscV Soc Hardware design
+   ├── soc_Opal_sw_t8           -- RiscV Barematel firmware design
+   |   ├── bsp                             
+   |   |   └── efinix                                
+   |   ├── software                        
+   |   |   └── standalone                  
+   |   ├── cpu0.yaml                       
+   |   ├── project_settings_opal.xml       
+   |   └── project_settings_opal_linux.xml 
+   |   
+   └── README.md                -- Read me
 ```

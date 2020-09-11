@@ -23,6 +23,7 @@ JPGs in SPI Flash --> JPEG decoder in T8 --> TFT LCD display TK043F1569
 |-----------------|---------------|-------------------|-------|
 | i_sysclk        |   34.917      |     28.640        | (R-R) |
 
+## Project hierarchy
 ```
 ├──jpeg_viewer
 |  ├── demo		-- packed FPGA and xxd JPGs bit stream

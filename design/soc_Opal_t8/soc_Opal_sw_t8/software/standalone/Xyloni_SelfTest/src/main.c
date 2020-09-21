@@ -31,7 +31,7 @@ void main() {
     bsp_putString("==========Xyloni Test Menu===========\n\n\r");
 
     bsp_putString("---Press BTN2 On Board - INVERT LED BLINK\n\r");
-    bsp_putString("---Press KeyBoard any Key - READ SD CARD INFO\n\r");
+    bsp_putString("---Press KeyBoard 'Enter' Key - READ SD CARD INFO\n\r");
 
     while(1){
 

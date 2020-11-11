@@ -1,14 +1,37 @@
-# Xyloni T8 Development Kit User Guide
+# Xyloni Development Kit
 
 Welcome to the Xyloni® Development Kit Github repo. This site provides projects and software you can use with your Xyloni® Development Board.
 
--   [What's in the Box?](#whats-in-the-box)
--   [Register Your Kit](#register-your-xyloni-development-kit)
--   [Install the Efinity Software](#install-the-efinity-software)
--   [Run the Out of Box Design](#run-the-out-of-box-design)
--   [Functional Description](docs/xyloni-github-headers.md)
+-   [Register Your Xyloni Development Kit](#register)
+-   [Install the Efinity Software](#efinity)
+-   [Features](#features)
+-   [Overview](#overview)
+-   [Run the Out of Box Design](#out-of-box)
+-   [Xyloni Development Board Functional Description](xyloni-github-headers.md)
 
 ![](docs/xyoni-kit.png "Xyloni Development Kit")
+
+The Xyloni® Development Kit includes:
+
+-   Xyloni® Development Board preloaded with a demonstration design
+-   Mini-USB cable \(type B\)
+-   3 unsoldered pin headers
+
+## Register Your Xyloni® Development Kit
+
+When you purchase an Efinix development kit, you also receive a copy of the Efinity® software plus one year of software upgrades and patches. The Efinity® software is available for download from the Support Center on the Efinix web site.
+
+To get access to our Support Center to download your software, register your development kit at [https://www.efinixinc.com/register](https://www.efinixinc.com/register).
+
+## Install the Efinity® Software
+
+To develop your own designs for the T8 device on the board, you must install the Efinity® software. You can obtain the software from the Efinix® Support Center under Efinity Software \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
+
+The Efinity® software includes tools to program the device on the board. Refer to the Efinity® Software User Guide for information about how to program the device.
+
+**Note:** Efinity® documentation is installed with the software \(see **Help** \> **Documentation**\) and is also available in the Support Center under Documentation \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
+
+## Features
 
 -   Efinix® T8F81C2 device in an 81-ball FineLine BGA package
 -   128 Mbit SPI NOR flash memory
@@ -26,6 +49,8 @@ Welcome to the Xyloni® Development Kit Github repo. This site provides projects
     -   Power source: USB
     -   User selectable voltages from 1.8 V, 2.5 V, and 3.3 V for bank 2A and 2B through USB
 -   Power good and T8F81C2 configuration done LEDs
+
+## Overview
 
 The board features the Efinix® T8 programmable device in a 81-ball FBGA package, which is fabricated using Efinix® Quantum™ technology. The Quantum™-accelerated programmable logic and routing fabric is wrapped with an I/O interface in a small footprint package. T8 devices also include embedded memory blocks and multiplier blocks \(or DSP blocks\). You create designs for the T8 device in the Efinity® software, and then download the resulting configuration bitstream to the board using the USB connection.
 
@@ -50,29 +75,7 @@ The SPI NOR flash memory stores the configuration bitstream it receives from the
 
 The board regulates down the 5 V DC input using on-board switching regulators to provide the necessary voltages for the T8 device, PMOD module, SPI flash memory, and on-board oscillator.
 
-## What's in the Box? { .section}
-
-The Xyloni® Development Kit includes:
-
--   Xyloni® Development Board preloaded with a demonstration design
--   Mini-USB cable \(type B\)
--   3 unsoldered pin headers
-
-## Register Your Xyloni® Development Kit { .section}
-
-When you purchase an Efinix development kit, you also receive a copy of the Efinity® software plus one year of software upgrades and patches. The Efinity® software is available for download from the Support Center on the Efinix web site.
-
-To get access to our Support Center to download your software, register your development kit at [https://www.efinixinc.com/register](https://www.efinixinc.com/register).
-
-## Install the Efinity® Software { .section}
-
-To develop your own designs for the T8 device on the board, you must install the Efinity® software. You can obtain the software from the Efinix® Support Center under Efinity Software \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
-
-The Efinity® software includes tools to program the device on the board. Refer to the Efinity® Software User Guide for information about how to program the device.
-
-**Note:** Efinity® documentation is installed with the software \(see **Help** \> **Documentation**\) and is also available in the Support Center under Documentation \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
-
-## Run the Out of Box Design { .section}
+## Run the Out of Box Design
 
 Efinix® preloads the Xyloni® Development Board with an example design. The design includes two functions, the invert LED operation and the read SD card information operation. The read SD card information operation requires a terminal program in a computer and an SD card inserted into the SD card slot to display the SD card information.
 
@@ -80,7 +83,7 @@ The example design implements an open-source variation of the Efinix®'s Opal RI
 
 ![](docs/xyloni-ed-bd.svg "Xyloni Development Board Example Design Block Diagram")
 
-### Invert LED { .section}
+### Invert LED
 
 Follow these steps to run the invert LED operation:
 
@@ -90,7 +93,7 @@ Follow these steps to run the invert LED operation:
 
 2.  Press pushbutton BTN2 to invert the LEDs. The LEDs turn off sequentially from LED1 to LED4.
 
-### Read SD Card Information { .section}
+### Read SD Card Information
 
 Follow these steps to run the read SD card information operation:
 
@@ -128,4 +131,3 @@ Follow these steps to run the read SD card information operation:
     ```
     Response Fail!! NO SD Card Detect
     ```
-

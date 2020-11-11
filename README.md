@@ -2,12 +2,12 @@
 
 Welcome to the Xyloni® Development Kit Github repo. This site provides projects and software you can use with your Xyloni® Development Board.
 
--   [Register Your Xyloni Development Kit](#register)
--   [Install the Efinity Software](#efinity)
+-   [Register Your Xyloni Development Kit](#register-your-kit)
+-   [Install the Efinity Software](#install-the-efinity-software)
 -   [Features](#features)
 -   [Overview](#overview)
--   [Run the Out of Box Design](#out-of-box)
--   [Xyloni Development Board Functional Description](xyloni-github-headers.md)
+-   [Run the Out of Box Design](#run-the-out-of-box-design)
+-   [Functional Description](docs/xyloni-github-headers.md)
 
 ![](docs/xyoni-kit.png "Xyloni Development Kit")
 
@@ -17,13 +17,13 @@ The Xyloni® Development Kit includes:
 -   Mini-USB cable \(type B\)
 -   3 unsoldered pin headers
 
-## Register Your Xyloni® Development Kit
+## Register Your Kit
 
 When you purchase an Efinix development kit, you also receive a copy of the Efinity® software plus one year of software upgrades and patches. The Efinity® software is available for download from the Support Center on the Efinix web site.
 
 To get access to our Support Center to download your software, register your development kit at [https://www.efinixinc.com/register](https://www.efinixinc.com/register).
 
-## Install the Efinity® Software
+## Install the Efinity Software
 
 To develop your own designs for the T8 device on the board, you must install the Efinity® software. You can obtain the software from the Efinix® Support Center under Efinity Software \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
 

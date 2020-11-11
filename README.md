@@ -27,9 +27,9 @@ The board features the Efinix® T8 programmable device in a 81-ball FBGA package
 
 **Note:** For more information on T8 FPGAs, refer to the [T8 Data Sheet](https://www.efinixinc.com/support/docsdl.php?s=ef&pn=DST8).
 
-![](docs/xyloni-dvb-callouts.svg "Xyloni Development Board Components (Top)")
+![](docs/xyloni-dvb-callouts.png "Xyloni Development Board Components (Top)")
 
-![](docs/xyloni-dvb-callouts-bottom.svg "Xyloni Development Board Components (Bottom)")
+![](docs/xyloni-dvb-callouts-bottom.png "Xyloni Development Board Components (Bottom)")
 
 The FTDI FT4232H module has four channels to support the following interfaces:
 

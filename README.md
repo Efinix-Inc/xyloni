@@ -2,7 +2,7 @@
 
 Welcome to the Xyloni® Development Kit Github repo. This site provides projects and software you can use with your Xyloni® Development Board.
 
-[Functional Description](https://github.com/Efinix-Inc/xyloni/docs/xyloni-github-headers.md).
+[Functional Description](docs/xyloni-github-headers.md)
 
 ![](docs/xyoni-kit.png "Xyloni Development Kit")
 

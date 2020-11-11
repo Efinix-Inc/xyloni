@@ -2,7 +2,7 @@
 
 The Xyloni® Development Board contains a variety of components to help you build designs for the Trion® T8 device.
 
-![](../art/xyloni-board-block-diagram.svg "Xyloni Development Board Block Diagram")
+![](xyloni-board-block-diagram.svg "Xyloni Development Board Block Diagram")
 
 ## Power and Reset
 

@@ -76,7 +76,7 @@ The example design implements an open-source variation of the Efinix®'s Opal RI
 
 ![](docs/xyloni-ed-bd.svg "Xyloni Development Board Example Design Block Diagram")
 
-## Invert LED { .section}
+### Invert LED { .section}
 
 Follow these steps to run the invert LED operation:
 
@@ -86,7 +86,7 @@ Follow these steps to run the invert LED operation:
 
 2.  Press pushbutton BTN2 to invert the LEDs. The LEDs turn off sequentially from LED1 to LED4.
 
-## Read SD Card Information { .section}
+### Read SD Card Information { .section}
 
 Follow these steps to run the read SD card information operation:
 

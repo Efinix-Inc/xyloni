@@ -2,7 +2,11 @@
 
 Welcome to the Xyloni® Development Kit Github repo. This site provides projects and software you can use with your Xyloni® Development Board.
 
-[Functional Description](docs/xyloni-github-headers.md)
+-   [What's in the Box?](#whats-in-the-box)
+-   [Register Your Kit](#register-your-xyloni-development-kit)
+-   [Install the Efinity Software](#install-the-efinity-software)
+-   [Run the Out of Box Design](#run-the-out-of-box-design)
+-   [Functional Description](docs/xyloni-github-headers.md)
 
 ![](docs/xyoni-kit.png "Xyloni Development Kit")
 

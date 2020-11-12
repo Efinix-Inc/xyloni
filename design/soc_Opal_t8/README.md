@@ -1,5 +1,5 @@
-Description
-===========
+Opal SoC for Xyloni
+===================
 
 Efinix has created several RISC-V SoCs based on the VexRiscv core created by Charles
 Papon. The VexRiscv core, which won first place in the RISC-V SoftCPU contest in
@@ -8,10 +8,9 @@ pipeline stages (fetch, decode, execute, memory, and writeback), and a configura
 feature set. Each SoC has a RISC-V processor, memory, a range of I/O, and interfaces for embedding user functions. You can easily create entire systems that include
 embedded compute and user-defined accelerators all in the same Trion® FPGA.
 
-## Opal SoC for Xyloni
-Opal is a cacheless, compact SoC with a small resource footprint.
-It is ideal for applications that require embedded compute capability such as system monitoring or remote configuration and control.  
-Refer to the [Opal (Xyloni) RISC-V SoC Hardware and Software User Guide](https://www.efinixinc.com/support/docsdl.php?s=ef&amp;pn=OPALUGX) in the Support Center on the Efinix web site for detailed usage instructions.
+Opal is a cacheless, compact SoC with a small resource footprint. It is ideal for 
+applications that require embedded compute capability such as system monitoring or 
+remote configuration and control. Refer to the [Opal (Xyloni) RISC-V SoC Hardware and Software User Guide](https://www.efinixinc.com/support/docsdl.php?s=ef&amp;pn=OPALUGX) in the Support Center on the Efinix web site for detailed usage instructions.
 
 - ~5K LEs/18 RAM blocks
 - 20 MHz

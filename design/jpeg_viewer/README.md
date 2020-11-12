@@ -1,8 +1,8 @@
 Description
 ===========
 
-This is a reference of decoding JPG YUV444 with Xyloni board.
-The Trion® T8 FPGA reads the JPGs stored in the on board SPI Flash and shows through a TFT LCD display.
+This example shows how to decode JPG YUV444 using the Xyloni board.
+The Trion® T8 FPGA reads the JPGs stored in the on-board SPI flash and shows results on a TFT LCD display.
 
 JPGs in SPI Flash --> JPEG decoder in T8 --> TFT LCD display TK043F1569
 

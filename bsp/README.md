@@ -9,7 +9,7 @@ Description
 * pmod_spi.csv - Pre-defined Xyloni pin assigment with J3 PMOD as SPI for build_csv.py input <br/>
 * pmod_uart.csv - Pre-defined Xyloni pin assigment with J3 PMOD as UART for build_csv.py input <br/>
 
-##Dependencies <br/>
+## Dependencies
 Under efinity/bin/ <br/>
 On Windows:
 ```
@@ -21,8 +21,8 @@ On Ubuntu:
 ./setup.sh
 ```
 
-##Usage <br/>
-###Interface Designer pin assignment generation <br/>
+## Usage
+### Interface Designer pin assignment generation
 For Xyloni in simple
 ```
 python3 build.py -m spi -p hi_xyloni -1 8 -2 5
@@ -41,7 +41,7 @@ Generate a Xyloni board Interface Designer file with project name as hi_xyloni f
 
 The output Interface Designer file is ueder output/. <br/>
 
-###Top-level template generation
+### Top-level template generation
 1. Start Efinity
 ```
 efinity

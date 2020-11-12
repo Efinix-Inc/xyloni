@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Get access to useful python package
 import os
 import sys

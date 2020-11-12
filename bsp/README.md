@@ -49,6 +49,8 @@ efinity
 2. Create a new project with the same project name, e.g. hi_xyloni
 3. move the <project_name>.peri.xml generated under bsp/output/ to your project root
 3. Start Interface Designer
+![alt text](https://github.com/Efinix-Inc/xyloni/blob/master/docs/efinity_toolbar.png "Efinity Toolbar")
 4. In Interface Designer, create a PLL if it is used
 5. Generate constraint
+![alt text](https://github.com/Efinix-Inc/xyloni/blob/master/docs/pt_toolbar.png "Interface Designer Toolbar")
 6. a top-level template <project_name>_template.v is generated under outflow/

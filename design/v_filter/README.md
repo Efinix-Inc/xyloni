@@ -1,7 +1,7 @@
-Description
-===========
+Streaming Video Filter
+======================
 
-This is a Video Streaming demo with Sobel Filter on Xyloni board.
+This design implements a video streaming Sobel filter on the Xyloni board.
 
 OV5640 Camera module --> Trion® T8 FPGA --> VGA666
 

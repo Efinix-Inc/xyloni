@@ -29,7 +29,7 @@ remote configuration and control. Refer to the [Opal (Xyloni) RISC-V SoC Hardwar
 ```
 ├── soc_Opal_hw                 -- Root
    ├── soc_Opal_hw_t8           -- RISC-V Soc hardware design
-   ├── soc_Opal_sw_t8           -- RISC-V barematel firmware design
+   ├── soc_Opal_sw_t8           -- RISC-V baremetal firmware design
    |   ├── bsp                             
    |   |   └── efinix                      
    |   ├── config       

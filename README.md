@@ -4,6 +4,8 @@ Welcome to the Xyloni® Development Kit Github repo. This site provides projects
 
 -   [Register Your Xyloni Development Kit](#register-your-kit)
 -   [Install the Efinity Software](#install-the-efinity-software)
+-   [Install the USB Driver \(Linux\)](docs/task-install-usb-drivers-linux.md)
+-   [Install USB Drivers \(Windows\)](docs/xyloni-github-drivers.md)
 -   [Features](#features)
 -   [Overview](#overview)
 -   [Run the Out of Box Design](#run-the-out-of-box-design)

@@ -1,3 +1,3 @@
 # config
 
-This folder has configuration files for Eclipse and OpenOCD.
+This folder has configuration files for Eclipse and OpenOCD for Windows.

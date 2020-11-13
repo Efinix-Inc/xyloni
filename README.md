@@ -27,9 +27,9 @@ To get access to our Support Center to download your software, register your dev
 
 ## Install the Efinity Software
 
-To develop your own designs for the T8 device on the board, you must install the Efinity® software. You can obtain the software from the Efinix® Support Center under Efinity Software \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
+To develop your own designs for the T8 device on the board, you must install the Efinity® software. You can obtain the software from the Efinix® Support Center under Efinity Software \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\). [Read installation instructions](https://www.efinixinc.com/support/docsdl.php?s=ef&pn=UG-EFN-INSTALL).
 
-The Efinity® software includes tools to program the device on the board. Refer to the Efinity® Software User Guide for information about how to program the device.
+The Efinity® software includes tools to program the device on the board. Refer to the [Efinity® Software User Guide](https://www.efinixinc.com/support/docsdl.php?s=ef&pn=UG-EFN-SOFTWARE) for information about how to program the device.
 
 **Note:** Efinity® documentation is installed with the software \(see **Help** \> **Documentation**\) and is also available in the Support Center under Documentation \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
 

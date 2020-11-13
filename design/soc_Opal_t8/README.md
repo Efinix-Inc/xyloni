@@ -31,12 +31,12 @@ remote configuration and control. Refer to the [Opal (Xyloni) RISC-V SoC Hardwar
    ├── soc_Opal_hw_t8           -- RISC-V Soc hardware design
    ├── soc_Opal_sw_t8           -- RISC-V barematel firmware design
    |   ├── bsp                             
-   |   |   └── efinix                                
+   |   |   └── efinix                      
+   |   ├── config       
+   |   ├── config_linux
    |   ├── software                        
    |   |   └── standalone                  
-   |   ├── cpu0.yaml                       
-   |   ├── project_settings_opal.xml       
-   |   └── project_settings_opal_linux.xml 
+   |   └── cpu0.yaml                       
    |   
    └── README.md                -- Read me
 ```

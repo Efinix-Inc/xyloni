@@ -6,6 +6,8 @@ On Windows, you use software from Zadig to install drivers. In the Zadig softwar
 
 **Note:** If you install a composite driver, all of the interfaces appear as a composite device and you cannot use them separately \(which means you cannot use all of the features of the board\).
 
+**Important:** You must use the Efinity software v2020.1.140 with patch v2020.1.140.7.2 or higher with the Xyloni development board. Previous versions do not support separate interfaces.
+
 ## Separate Interfaces
 
 You install drivers for separate interfaces when you want to use each interface independently.

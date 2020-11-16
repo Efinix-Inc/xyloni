@@ -65,9 +65,9 @@ The board features the Efinix® T8 programmable device in a 81-ball FBGA package
 The FTDI FT4232H module has four channels to support the following interfaces:
 
 -   FTDI interface 0 = SPI
--   FTDI interface 0 = JTAG
--   FTDI interface 0 = UART
--   FTDI interface 0 = VCCIO setting
+-   FTDI interface 1 = JTAG
+-   FTDI interface 2 = UART
+-   FTDI interface 3 = VCCIO setting
 
 It receives the T8 configuration bitstream from a USB host and writes to the on-board SPI NOR flash memory. After a reset in SPI passive mode, the FTDI controller can also write the configuration bitstream directly to the FPGA. Additionally, it supports direct JTAG programming mode in which it writes the configuration bitstream directly to the FPGA through the JTAG interface.
 

@@ -20,11 +20,9 @@ You install drivers for separate interfaces when you want to use each interface 
 3.  Choose **Options** \> **List All Devices**.
 4.  Repeat the following steps for Xyloni \(Interface 0\), Xyloni \(Interface 1\), and Xyloni \(Interface 3\).
 
-    CAUTION:
-
-    Do not perform the following steps for Xyloni \(Interface 2\).
-
     -   Select the **libusbK** \(*version*\) option in the **Driver** drop-down list. \(Do **not** choose WinUSB.\)
     -   Click **Replace Driver**.
+    
+    IMPORTANT: **Do not install a driver for interface 2.** When you connect the Xyloni board to you computer, Windows automatically installs a driver for it.
 5.  Close the Zadig software.
 

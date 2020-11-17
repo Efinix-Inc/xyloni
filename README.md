@@ -105,7 +105,7 @@ Follow these steps to run the read SD card information operation:
 
 2.  Insert the SD card into the SC card slot.
 3.  Open a terminal software on the computer. You can use any Windows or Linux terminal applications such as, PuTTY, Tera Term, Minicom, and others.
-4.  Select the com\[2\] port of UART connection in the terminal. Example:
+4.  Select the available USB COM port. Depending on the operating system settings, the terminal may show four COM ports instead of one. In that case, select the COM[2] port in the terminal software. Example:
     -   In Windows, if the terminal shows com30 com31 com32 com33, select com32.
     -   In Linux, if the terminal shows ttyUSB0 ttyUSB1 ttyUSB2 ttyUSB3, select USB2.
 5.  Set the serial port baud-rate to 115200 bits per second.
@@ -116,7 +116,8 @@ Follow these steps to run the read SD card information operation:
     ---Press BTN2 On Board - INVERT LED BLINK
     ---Press Keyboard 'Enter' Key  - READ SD CARD INFO
     ```
-
+    **NOTE:** If the terminal does not display the Xyloni test menu correctly, verify that the port's baud rate is set correctly.
+    
 7.  Press the Enter key, and the terminal displays the SD card information. For example:
 
     ```

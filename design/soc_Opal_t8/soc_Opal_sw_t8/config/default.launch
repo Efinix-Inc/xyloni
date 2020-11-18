@@ -16,7 +16,7 @@
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerExecutable" value="${RISCV_TOOLS_HOME}/openocd/build-win64/bin/openocd"/>
 <intAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerGdbPortNumber" value="3333"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerLog" value=""/>
-<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerOther" value="-f ${workspace_loc}\soc_Opal_sw\bsp\efinix\EfxOpalSoc\openocd\ftdi.cfg&#10;-c 'set CPU0_YAML ${workspace_loc}\\soc_Opal_sw\\cpu0.yaml'&#10;-f ${workspace_loc}\soc_Opal_sw\bsp\efinix\EfxOpalSoc\openocd\debug.cfg"/>
+<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerOther" value="-f ${workspace_loc}\soc_Opal_sw_t8\bsp\efinix\EfxOpalSoc_t8\openocd\ftdi.cfg&#10;-c 'set CPU0_YAML ${workspace_loc}\\soc_Opal_sw\\cpu0.yaml'&#10;-f ${workspace_loc}\soc_Opal_sw\bsp\efinix\EfxOpalSoc\openocd\debug.cfg"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerTclPortNumber" value="6666"/>
 <intAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerTelnetPortNumber" value="4444"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.otherInitCommands" value=""/>

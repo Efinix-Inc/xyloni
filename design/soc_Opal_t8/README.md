@@ -27,9 +27,9 @@ remote configuration and control. Refer to the [Opal (Xyloni) RISC-V SoC Hardwar
 
 
 ```
-├── soc_Opal_hw                 -- Root
-   ├── soc_Opal_hw_t8           -- RISC-V Soc hardware design
-   ├── soc_Opal_sw_t8           -- RISC-V baremetal firmware design
+├── soc_Opal_hw                           -- Root
+   ├── soc_Opal_hw_t8                     -- RISC-V Soc hardware design
+   ├── soc_Opal_sw_t8                     -- RISC-V baremetal firmware design
    |   ├── bsp                             
    |   |   └── efinix
    |   |         └── EfxOpalSoc_t8
@@ -37,11 +37,11 @@ remote configuration and control. Refer to the [Opal (Xyloni) RISC-V SoC Hardwar
    |   |                  └── include     --soc header file
    |   |                  └── linker      -- compiler linker file
    |   |                  └── openocd     -- openocd config file
-   |   ├── config               -- Eclipse Setting file for windows
-   |   ├── config_linux         -- Eclipse Setting file for Linux
+   |   ├── config                         -- Eclipse Setting file for windows
+   |   ├── config_linux                   -- Eclipse Setting file for Linux
    |   ├── software                        
-   |   |   └── standalone       -- Firmware Demo                
+   |   |   └── standalone                 -- Firmware Demo                
    |   └── cpu0.yaml                       
    |   
-   └── README.md                -- Read me
+   └── README.md                          -- Read me
 ```

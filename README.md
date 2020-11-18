@@ -4,6 +4,8 @@ Welcome to the Xyloni® Development Kit Github repo. This site provides projects
 
 -   [Register Your Xyloni Development Kit](#register-your-kit)
 -   [Install the Efinity Software](#install-the-efinity-software)
+-   [Install the USB Driver \(Linux\)](docs/task-install-usb-drivers-linux.md)
+-   [Install USB Drivers \(Windows\)](docs/xyloni-github-drivers.md)
 -   [Features](#features)
 -   [Overview](#overview)
 -   [Run the Out of Box Design](#run-the-out-of-box-design)
@@ -25,9 +27,9 @@ To get access to our Support Center to download your software, register your dev
 
 ## Install the Efinity Software
 
-To develop your own designs for the T8 device on the board, you must install the Efinity® software. You can obtain the software from the Efinix® Support Center under Efinity Software \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
+To develop your own designs for the T8 device on the board, you must install the Efinity® software. You can obtain the software from the Efinix® Support Center under Efinity Software \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\). [Read installation instructions](https://www.efinixinc.com/support/docsdl.php?s=ef&pn=UG-EFN-INSTALL).
 
-The Efinity® software includes tools to program the device on the board. Refer to the Efinity® Software User Guide for information about how to program the device.
+The Efinity® software includes tools to program the device on the board. Refer to the [Efinity® Software User Guide](https://www.efinixinc.com/support/docsdl.php?s=ef&pn=UG-EFN-SOFTWARE) for information about how to program the device.
 
 **Note:** Efinity® documentation is installed with the software \(see **Help** \> **Documentation**\) and is also available in the Support Center under Documentation \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
 
@@ -63,9 +65,9 @@ The board features the Efinix® T8 programmable device in a 81-ball FBGA package
 The FTDI FT4232H module has four channels to support the following interfaces:
 
 -   FTDI interface 0 = SPI
--   FTDI interface 0 = JTAG
--   FTDI interface 0 = UART
--   FTDI interface 0 = VCCIO setting
+-   FTDI interface 1 = JTAG
+-   FTDI interface 2 = UART
+-   FTDI interface 3 = VCCIO setting
 
 It receives the T8 configuration bitstream from a USB host and writes to the on-board SPI NOR flash memory. After a reset in SPI passive mode, the FTDI controller can also write the configuration bitstream directly to the FPGA. Additionally, it supports direct JTAG programming mode in which it writes the configuration bitstream directly to the FPGA through the JTAG interface.
 
@@ -103,7 +105,7 @@ Follow these steps to run the read SD card information operation:
 
 2.  Insert the SD card into the SC card slot.
 3.  Open a terminal software on the computer. You can use any Windows or Linux terminal applications such as, PuTTY, Tera Term, Minicom, and others.
-4.  Select the com\[2\] port of UART connection in the terminal. Example:
+4.  Select the available USB COM port. Depending on the operating system settings, the terminal may show four COM ports instead of one. In that case, select the COM[2] port in the terminal software. Example:
     -   In Windows, if the terminal shows com30 com31 com32 com33, select com32.
     -   In Linux, if the terminal shows ttyUSB0 ttyUSB1 ttyUSB2 ttyUSB3, select USB2.
 5.  Set the serial port baud-rate to 115200 bits per second.
@@ -114,7 +116,8 @@ Follow these steps to run the read SD card information operation:
     ---Press BTN2 On Board - INVERT LED BLINK
     ---Press Keyboard 'Enter' Key  - READ SD CARD INFO
     ```
-
+    **NOTE:** If the terminal does not display the Xyloni test menu correctly, verify that the port's baud rate is set correctly.
+    
 7.  Press the Enter key, and the terminal displays the SD card information. For example:
 
     ```

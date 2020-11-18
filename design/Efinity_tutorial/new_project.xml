@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<efx:project name="new_project" description="" last_change_date="Do Oktober 15 2020 12:33:59" location="C:/tmp/XyloniEvalBoard" sw_version="2020.1.140.5.5" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="true" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+    <efx:device_info>
+        <efx:family name="Trion"/>
+        <efx:device name="T8F81"/>
+        <efx:timing_model name="C2"/>
+    </efx:device_info>
+    <efx:design_info def_veri_version="verilog_2k" def_vhdl_version="vhdl_2008">
+        <efx:top_module name="counter"/>
+        <efx:design_file name="counter.vhd" version="vhdl_2008"/>
+        <efx:top_vhdl_arch name=""/>
+    </efx:design_info>
+    <efx:constraint_info>
+        <efx:sdc_file name="counterconstrain.sdc"/>
+        <efx:inter_file name=""/>
+    </efx:constraint_info>
+    <efx:sim_info>
+        <efx:sim_file name="counter_tb.vhd"/>
+    </efx:sim_info>
+    <efx:misc_info/>
+    <efx:synthesis tool_name="efx_map">
+        <efx:param name="work_dir" value="work_syn" value_type="e_string"/>
+        <efx:param name="write_efx_verilog" value="on" value_type="e_bool"/>
+        <efx:param name="mode" value="speed" value_type="e_option"/>
+        <efx:param name="max_ram" value="-1" value_type="e_integer"/>
+        <efx:param name="max_mult" value="-1" value_type="e_integer"/>
+        <efx:param name="infer-clk-enable" value="3" value_type="e_option"/>
+        <efx:param name="infer-sync-set-reset" value="1" value_type="e_option"/>
+        <efx:param name="fanout-limit" value="0" value_type="e_integer"/>
+        <efx:param name="seq_opt" value="0" value_type="e_option"/>
+    </efx:synthesis>
+    <efx:place_and_route tool_name="efx_pnr">
+        <efx:param name="work_dir" value="work_pnr" value_type="e_string"/>
+        <efx:param name="verbose" value="off" value_type="e_bool"/>
+        <efx:param name="load_delaym" value="on" value_type="e_bool"/>
+        <efx:param name="optimization_level" value="NULL" value_type="e_option"/>
+        <efx:param name="qp_options=anneal_random_seed=" value="1" value_type="e_integer"/>
+    </efx:place_and_route>
+    <efx:bitstream_generation tool_name="efx_pgm">
+        <efx:param name="mode" value="active" value_type="e_string"/>
+        <efx:param name="width" value="1" value_type="e_string"/>
+        <efx:param name="cold_boot" value="off" value_type="e_bool"/>
+        <efx:param name="cascade" value="off" value_type="e_option"/>
+        <efx:param name="enable_roms" value="on" value_type="e_option"/>
+        <efx:param name="spi_low_power_mode" value="on" value_type="e_bool"/>
+        <efx:param name="io_weak_pullup" value="on" value_type="e_bool"/>
+        <efx:param name="oscillator_clock_divider" value="DIV8" value_type="e_option"/>
+        <efx:param name="enable_crc_check" value="on" value_type="e_bool"/>
+    </efx:bitstream_generation>
+    <efx:debugger>
+        <efx:param name="work_dir" value="work_dbg" value_type="e_string"/>
+        <efx:param name="auto_instantiation" value="off" value_type="e_bool"/>
+        <efx:param name="profile" value="NONE" value_type="e_string"/>
+    </efx:debugger>
+</efx:project>

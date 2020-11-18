@@ -5,6 +5,8 @@ This design implements a video streaming Sobel filter on the Xyloni board.
 
 OV5640 Camera module --> Trion® T8 FPGA --> VGA666
 
+![alt text](https://github.com/Efinix-Inc/xyloni/blob/master/docs/v_filter.JPG "demo")
+
 ## Resource Utilization
 | Resource        | Number   |
 |-----------------|----------|

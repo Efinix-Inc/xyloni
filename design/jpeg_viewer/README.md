@@ -6,6 +6,8 @@ The Trion® T8 FPGA reads the JPGs stored in the on-board SPI flash and shows re
 
 JPGs in SPI Flash --> JPEG decoder in T8 --> TFT LCD display TK043F1569
 
+![alt text](https://github.com/Efinix-Inc/xyloni/blob/master/docs/jpeg_viewer.JPG "demo")
+
 ## Resource Utilization
 | Resource        | Number   |
 |-----------------|----------|

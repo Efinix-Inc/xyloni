@@ -9,9 +9,9 @@
 <includepath>${RISCV_TOOLS_HOME}\riscv-xpack-toolchain_8.3.0-1.1_windows\riscv-none-embed\include\sys</includepath>
 <includepath>${RISCV_TOOLS_HOME}\riscv-xpack-toolchain_8.3.0-1.1_windows\lib\gcc\riscv-none-embed\8.3.0\include</includepath>
 <includepath>${RISCV_TOOLS_HOME}\riscv-xpack-toolchain_8.3.0-1.1_windows\include</includepath>
-<includepath>${workspace_loc}\soc_Opal_sw\bsp\efinix\EfxOpalSoc\include</includepath>
-<includepath>${workspace_loc}\soc_Opal_sw\bsp\efinix\EfxOpalSoc\app</includepath>
-<includepath>${workspace_loc}\soc_Opal_sw\software\standalone\driver</includepath>
+<includepath>${workspace_loc}\soc_Opal_sw_t8\bsp\efinix\EfxOpalSoc_t8\include</includepath>
+<includepath>${workspace_loc}\soc_Opal_sw_t8\bsp\efinix\EfxOpalSoc_t8\app</includepath>
+<includepath>${workspace_loc}\soc_Opal_sw_t8\software\standalone\driver</includepath>
 
 </language>
 <language name="GNU C++">
@@ -19,9 +19,9 @@
 <includepath>${RISCV_TOOLS_HOME}\riscv-xpack-toolchain_8.3.0-1.1_windows\riscv-none-embed\include\sys</includepath>
 <includepath>${RISCV_TOOLS_HOME}\riscv-xpack-toolchain_8.3.0-1.1_windows\lib\gcc\riscv-none-embed\8.3.0\include</includepath>
 <includepath>${RISCV_TOOLS_HOME}\riscv-xpack-toolchain_8.3.0-1.1_windows\include</includepath>
-<includepath>${workspace_loc}\soc_Opal_sw\bsp\efinix\EfxOpalSoc\include</includepath>
-<includepath>${workspace_loc}\soc_Opal_sw\bsp\efinix\EfxOpalSoc\app</includepath>
-<includepath>${workspace_loc}\soc_Opal_sw\software\standalone\driver</includepath>
+<includepath>${workspace_loc}\soc_Opal_sw_t8\bsp\efinix\EfxOpalSoc_t8\include</includepath>
+<includepath>${workspace_loc}\soc_Opal_sw_t8\bsp\efinix\EfxOpalSoc_t8\app</includepath>
+<includepath>${workspace_loc}\soc_Opal_sw_t8\software\standalone\driver</includepath>
 
 </language>
 <language name="GNU C">
@@ -29,9 +29,9 @@
 <includepath>${RISCV_TOOLS_HOME}\riscv-xpack-toolchain_8.3.0-1.1_windows\riscv-none-embed\include\sys</includepath>
 <includepath>${RISCV_TOOLS_HOME}\riscv-xpack-toolchain_8.3.0-1.1_windows\lib\gcc\riscv-none-embed\8.3.0\include</includepath>
 <includepath>${RISCV_TOOLS_HOME}\riscv-xpack-toolchain_8.3.0-1.1_windows\include</includepath>
-<includepath>${workspace_loc}\soc_Opal_sw\bsp\efinix\EfxOpalSoc\include</includepath>
-<includepath>${workspace_loc}\soc_Opal_sw\bsp\efinix\EfxOpalSoc\app</includepath>
-<includepath>${workspace_loc}\soc_Opal_sw\software\standalone\driver</includepath>
+<includepath>${workspace_loc}\soc_Opal_sw_t8\bsp\efinix\EfxOpalSoc_t8\include</includepath>
+<includepath>${workspace_loc}\soc_Opal_sw_t8\bsp\efinix\EfxOpalSoc_t8\app</includepath>
+<includepath>${workspace_loc}\soc_Opal_sw_t8\software\standalone\driver</includepath>
 
 </language>
 </section>

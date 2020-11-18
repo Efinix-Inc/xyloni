@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efxpt:design_db name="v_filter" device_def="T8F81" location="/home/alfredw_local/github/xyloni/design/v_filter/efinity" version="2020.1.140.3.6" db_version="20201999" last_change_date="Thu Sep  3 18:25:19 2020" xmlns:efxpt="http://www.efinixinc.com/peri_design_db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/peri_design_db peri_design_db.xsd ">
+<efxpt:design_db name="v_filter" device_def="T8F81" location="/home/alfredw_local/github/xyloni/design/v_filter/efinity" version="2020.1.140" db_version="20201999" last_change_date="Wed Nov 18 15:40:18 2020" xmlns:efxpt="http://www.efinixinc.com/peri_design_db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/peri_design_db peri_design_db.xsd ">
     <efxpt:device_info>
         <efxpt:iobank_info>
             <efxpt:iobank name="1A" iostd="3.3 V LVTTL / LVCMOS"/>
@@ -116,7 +116,7 @@
         <efxpt:gpio name="o_vga_r[0]" gpio_def="GPIOL_17" mode="output" bus_name="o_vga_r" is_lvds_gpio="false" io_standard="3.3 V LVTTL / LVCMOS">
             <efxpt:output_config name="o_vga_r[0]" name_ddio_lo="" register_option="register" clock_name="o_vga_pclk" is_clock_inverted="false" drive_strength="4" is_slew_rate="false" tied_option="none" ddio_type="none"/>
         </efxpt:gpio>
-        <efxpt:gpio name="o_vga_r[1]" gpio_def="GPIOL_05" mode="output" bus_name="o_vga_r" is_lvds_gpio="false" io_standard="3.3 V LVTTL / LVCMOS">
+        <efxpt:gpio name="o_vga_r[1]" gpio_def="GPIOR_05" mode="output" bus_name="o_vga_r" is_lvds_gpio="false" io_standard="3.3 V LVTTL / LVCMOS">
             <efxpt:output_config name="o_vga_r[1]" name_ddio_lo="" register_option="register" clock_name="o_vga_pclk" is_clock_inverted="false" drive_strength="4" is_slew_rate="false" tied_option="none" ddio_type="none"/>
         </efxpt:gpio>
         <efxpt:gpio name="o_vga_r[2]" gpio_def="GPIOL_14" mode="output" bus_name="o_vga_r" is_lvds_gpio="false" io_standard="3.3 V LVTTL / LVCMOS">

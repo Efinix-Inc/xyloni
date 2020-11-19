@@ -12,18 +12,38 @@ Opal is a cacheless, compact SoC with a small resource footprint. It is ideal fo
 applications that require embedded compute capability such as system monitoring or 
 remote configuration and control. Refer to the [Opal (Xyloni) RISC-V SoC Hardware and Software User Guide](https://www.efinixinc.com/support/docsdl.php?s=ef&amp;pn=OPALUGX) in the Support Center on the Efinix web site for detailed usage instructions.
 
-- ~5K LEs/18 RAM blocks
-- 20 MHz
-- 0.98 DMIPS/MHz
-- 4 KB on-chip RAM
-- 16 GPIOs
-- Timer
-- PLIC
-- 2 SPI masters
-- 1 I²C master/slave
-- 1 UART
-- 1 APB3 user peripheral
-- Fmax ~23 Mhz
+## Resource Utilization
+| Resource        | Number   |
+|-----------------|----------|
+| EFX_ADD         | 	823  |
+| EFX_LUT4        | 	3561 |
+| EFX_FF          | 	2362 |
+| EFX_RAM_5K      | 	18   |
+| EFX_GBUFCE      | 	2    |
+
+## Core Resource
+| Resource        | Number    |
+|-----------------|-----------|
+| INPUT           | 	31/96    |
+| OUTPUT          | 	51/113   |
+| CLOCK           | 	2/16     |
+| LOGIC ELEMENT   | 	5438/7384|
+| MEMORY BLOCK    | 	18/24    |
+| MUTIPLITERS     | 	4/8      |
+
+
+## Soc Spec
+| Resource        | Unit |
+|-----------------|--------|
+| Clock(Mhz)      | 	20    |
+| DMIPS/MHz       | 	0.98  |
+| On Chip Ram(KB) | 	4096  |
+| GPIO            | 	16    |
+| Timer           | 	1     |
+| SPI             | 	2     |
+| I2C             | 	1     |
+| UART            | 	1     |
+| ABP3 Bus        | 	1     |
 
 
 ```

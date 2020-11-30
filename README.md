@@ -33,6 +33,12 @@ The Efinity® software includes tools to program the device on the board. Refer 
 
 **Note:** Efinity® documentation is installed with the software \(see **Help** \> **Documentation**\) and is also available in the Support Center under Documentation \([www.efinixinc.com/support/](https://www.efinixinc.com/support/)\).
 
+## Clone the Example design
+```
+git clone https://github.com/Efinix-Inc/xyloni.git --recursive
+```
+
+
 ## Features
 
 -   Efinix® T8F81C2 device in an 81-ball FineLine BGA package

@@ -1,3 +1,5 @@
+// Require sRGB
+
 module color_coding_converter
 #(
 	parameter	R_DEPTH	= 5,
@@ -8,6 +10,11 @@ module color_coding_converter
 	parameter	V_DEPTH	= 5,
 	parameter	RGB2YUV_TWOCOMP_WIDTH	= 6,
 	parameter	YUV2RGB_TWOCOMP_WIDTH	= 7,
+	parameter	Y_OFFSET	= 8'd16,
+	// 16 for BT.601 Studio swing
+	// 0 for BT.601 Full swing
+	// 0 for JPEG YCbCr
+	parameter	OUTPUT_REG	= "TRUE",
 	
 	parameter	ROM_A00	= "rom_a00.mem",
 	parameter	ROM_A01	= "rom_a01.mem",
@@ -41,6 +48,15 @@ module color_coding_converter
 	output	[G_DEPTH-1:0]o_yuv2rgb_g,
 	output	[B_DEPTH-1:0]o_yuv2rgb_b
 );
+
+reg		r_rgb2yuv_de_P;
+reg		r_yuv2rgb_de_P;
+reg		[RGB2YUV_TWOCOMP_WIDTH-1:0]r_rom_a02_dout1_P;
+reg		[YUV2RGB_TWOCOMP_WIDTH-1:0]r_rom_a02_dout2_P;
+reg		[RGB2YUV_TWOCOMP_WIDTH-1:0]r_rom_a12_dout1_P;
+reg		[YUV2RGB_TWOCOMP_WIDTH-1:0]r_rom_a12_dout2_P;
+reg		[YUV2RGB_TWOCOMP_WIDTH-1:0]r_rom_a21_dout2_P;
+reg		[RGB2YUV_TWOCOMP_WIDTH-1:0]r_rom_a22_dout1_P;
 
 reg		r_rgb2yuv_de_1P;
 reg		[R_DEPTH-1:0]r_rgb2yuv_r_1P;
@@ -164,16 +180,22 @@ wire	[YUV2RGB_TWOCOMP_WIDTH-1:0]w_rom_a20_dout1;
 wire	[YUV2RGB_TWOCOMP_WIDTH-1:0]w_rom_a21_dout1;
 wire	[YUV2RGB_TWOCOMP_WIDTH-1:0]w_rom_a22_dout1;
 
+wire	w_rgb2yuv_de;
+wire	w_yuv2rgb_de;
+wire	[YUV2RGB_TWOCOMP_WIDTH-1:0]w_rom_a02_dout2;
+wire	[YUV2RGB_TWOCOMP_WIDTH-1:0]w_rom_a12_dout2;
+wire	[YUV2RGB_TWOCOMP_WIDTH-1:0]w_rom_a21_dout2;
+
 wire	c_rgb2yuv_sel;
 wire	c_yuv2rgb_sel;
 
 assign	c_rgb2yuv_sel	= 1'b0;
 assign	c_yuv2rgb_sel	= 1'b1;
 
-//assign	w_yuv2rgb_a01_2P	= {TWOCOMP_WIDTH{1'b0}};
-//assign	w_yuv2rgb_a22_2P	= {TWOCOMP_WIDTH{1'b0}};
-assign	w_yuv2rgb_a01_2P	= 6'd0;
-assign	w_yuv2rgb_a22_2P	= 6'd0;
+assign	w_yuv2rgb_a01_2P	= {YUV2RGB_TWOCOMP_WIDTH{1'b0}};
+assign	w_yuv2rgb_a22_2P	= {YUV2RGB_TWOCOMP_WIDTH{1'b0}};
+//assign	w_yuv2rgb_a01_2P	= 6'd0;
+//assign	w_yuv2rgb_a22_2P	= 6'd0;
 
 always@(posedge i_arst or posedge i_pclk)
 begin
@@ -242,8 +264,8 @@ begin
 	end
 	else
 	begin
-		r_rgb2yuv_de_1P		<= i_rgb2yuv_de;
-		r_yuv2rgb_de_1P		<= i_yuv2rgb_de;
+		r_rgb2yuv_de_1P		<= w_rgb2yuv_de;
+		r_yuv2rgb_de_1P		<= w_yuv2rgb_de;
 		
 		r_rgb2yuv_de_2P		<= r_rgb2yuv_de_1P;
 		r_yuv2rgb_de_2P		<= r_yuv2rgb_de_1P;
@@ -304,9 +326,9 @@ begin
 		r_yuv2rgb_s10_3P	<= w_yuv2rgb_a10_2P + w_yuv2rgb_a11_2P;
 		r_yuv2rgb_s20_3P	<= w_yuv2rgb_a20_2P + w_yuv2rgb_a22_2P;
 		
-		r_rgb2yuv_y_4P		<= r_rgb2yuv_s00_3P + w_rgb2yuv_a02_3P;
-		r_rgb2yuv_u_4P		<= r_rgb2yuv_s10_3P + w_rgb2yuv_a12_3P;
-		r_rgb2yuv_v_4P		<= r_rgb2yuv_s20_3P + w_rgb2yuv_a22_3P;
+		r_rgb2yuv_y_4P		<= r_rgb2yuv_s00_3P + w_rgb2yuv_a02_3P + Y_OFFSET;
+		r_rgb2yuv_u_4P		<= r_rgb2yuv_s10_3P + w_rgb2yuv_a12_3P + 8'd128;
+		r_rgb2yuv_v_4P		<= r_rgb2yuv_s20_3P + w_rgb2yuv_a22_3P + 8'd128;
 		
 		r_yuv2rgb_r_4P		<= r_yuv2rgb_s00_3P + w_yuv2rgb_a02_3P;
 		r_yuv2rgb_g_4P		<= r_yuv2rgb_s10_3P + w_yuv2rgb_a12_3P;
@@ -315,17 +337,23 @@ begin
 		r_yuv2rgb_g_2c_4P	<= {r_yuv2rgb_s10_3P[YUV2RGB_TWOCOMP_WIDTH-1], w_yuv2rgb_a12_3P[YUV2RGB_TWOCOMP_WIDTH-1]};
 		r_yuv2rgb_b_2c_4P	<= {r_yuv2rgb_s20_3P[YUV2RGB_TWOCOMP_WIDTH-1], w_yuv2rgb_a21_3P[YUV2RGB_TWOCOMP_WIDTH-1]};
 		
-		r_rgb2yuv_y_5P	<= r_rgb2yuv_y_4P[Y_DEPTH-1:0]+8'd16;
+//		r_rgb2yuv_y_5P	<= r_rgb2yuv_y_4P[Y_DEPTH-1:0]+8'd16;
+		if (r_rgb2yuv_y_4P[RGB2YUV_TWOCOMP_WIDTH-1])
+			r_rgb2yuv_y_5P	<= {Y_DEPTH{1'b1}};
+		else
+			r_rgb2yuv_y_5P	<= r_rgb2yuv_y_4P[Y_DEPTH-1:0]/*+Y_OFFSET*/;
 		
-//		if (r_rgb2yuv_u_4P[RGB2YUV_TWOCOMP_WIDTH-1])
+		if (r_rgb2yuv_u_4P[RGB2YUV_TWOCOMP_WIDTH-1])
 //			r_rgb2yuv_u_5P	<= {U_DEPTH{1'b0}};
-//		else
-			r_rgb2yuv_u_5P	<= r_rgb2yuv_u_4P[U_DEPTH-1:0]+8'd128;
+			r_rgb2yuv_u_5P	<= {U_DEPTH{1'b1}};
+		else
+			r_rgb2yuv_u_5P	<= r_rgb2yuv_u_4P[U_DEPTH-1:0]/*+8'd128*/;
 		
-//		if (r_rgb2yuv_v_4P[RGB2YUV_TWOCOMP_WIDTH-1])
+		if (r_rgb2yuv_v_4P[RGB2YUV_TWOCOMP_WIDTH-1])
 //			r_rgb2yuv_v_5P	<= {V_DEPTH{1'b0}};
-//		else
-			r_rgb2yuv_v_5P	<= r_rgb2yuv_v_4P[V_DEPTH-1:0]+8'd128;
+			r_rgb2yuv_v_5P	<= {V_DEPTH{1'b1}};
+		else
+			r_rgb2yuv_v_5P	<= r_rgb2yuv_v_4P[V_DEPTH-1:0]/*+8'd128*/;
 		
 		if (r_yuv2rgb_r_2c_4P[1] & r_yuv2rgb_r_2c_4P[0] & ~r_yuv2rgb_r_4P[YUV2RGB_TWOCOMP_WIDTH-1])
 			r_yuv2rgb_r_5P	<= {R_DEPTH{1'b0}};
@@ -393,8 +421,8 @@ true_dual_port_ram
 	.ADDR_WIDTH(1+R_DEPTH),
 	.WRITE_MODE_1("WRITE_FIRST"),
 	.WRITE_MODE_2("WRITE_FIRST"),
-	.OUTPUT_REG_1("FALSE"),
-	.OUTPUT_REG_2("FALSE"),
+	.OUTPUT_REG_1(OUTPUT_REG),
+	.OUTPUT_REG_2(OUTPUT_REG),
 	.RAM_INIT_FILE(ROM_A00),
 	.RAM_INIT_RADIX("HEX")
 )
@@ -427,8 +455,8 @@ true_dual_port_ram
 	.ADDR_WIDTH(1+G_DEPTH),
 	.WRITE_MODE_1("WRITE_FIRST"),
 	.WRITE_MODE_2("WRITE_FIRST"),
-	.OUTPUT_REG_1("FALSE"),
-	.OUTPUT_REG_2("FALSE"),
+	.OUTPUT_REG_1(OUTPUT_REG),
+	.OUTPUT_REG_2(OUTPUT_REG),
 	.RAM_INIT_FILE(ROM_A01),
 	.RAM_INIT_RADIX("HEX")
 )
@@ -484,9 +512,21 @@ inst_rom_a02
 	.we2	(1'b0),
 	.addr2	({c_yuv2rgb_sel, r_yuv2rgb_v_1P[V_DEPTH-1:0]}),
 	.din2	({YUV2RGB_TWOCOMP_WIDTH{1'b0}}),
-	.dout2	(w_yuv2rgb_a02_3P)
+//	.dout2	(w_yuv2rgb_a02_3P)
+	.dout2	(w_rom_a02_dout2)
 );
-assign	w_rgb2yuv_a02_3P	= w_rom_a02_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+generate
+	if (OUTPUT_REG == "TRUE")
+	begin
+		assign	w_rgb2yuv_a02_3P	= r_rom_a02_dout1_P;
+		assign	w_yuv2rgb_a02_3P	= r_rom_a02_dout2_P;
+	end
+	else
+	begin
+		assign	w_rgb2yuv_a02_3P	= w_rom_a02_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+		assign	w_yuv2rgb_a02_3P	= w_rom_a02_dout2;
+	end
+endgenerate
 
 true_dual_port_ram
 #(
@@ -496,8 +536,8 @@ true_dual_port_ram
 	.ADDR_WIDTH(1+R_DEPTH),
 	.WRITE_MODE_1("WRITE_FIRST"),
 	.WRITE_MODE_2("WRITE_FIRST"),
-	.OUTPUT_REG_1("FALSE"),
-	.OUTPUT_REG_2("FALSE"),
+	.OUTPUT_REG_1(OUTPUT_REG),
+	.OUTPUT_REG_2(OUTPUT_REG),
 	.RAM_INIT_FILE(ROM_A10),
 	.RAM_INIT_RADIX("HEX")
 )
@@ -530,8 +570,8 @@ true_dual_port_ram
 	.ADDR_WIDTH(1+G_DEPTH),
 	.WRITE_MODE_1("WRITE_FIRST"),
 	.WRITE_MODE_2("WRITE_FIRST"),
-	.OUTPUT_REG_1("FALSE"),
-	.OUTPUT_REG_2("FALSE"),
+	.OUTPUT_REG_1(OUTPUT_REG),
+	.OUTPUT_REG_2(OUTPUT_REG),
 	.RAM_INIT_FILE(ROM_A11),
 	.RAM_INIT_RADIX("HEX")
 )
@@ -586,9 +626,21 @@ inst_rom_a12
 	.we2	(1'b0),
 	.addr2	({c_yuv2rgb_sel, r_yuv2rgb_v_1P[B_DEPTH-1:0]}),
 	.din2	({YUV2RGB_TWOCOMP_WIDTH{1'b0}}),
-	.dout2	(w_yuv2rgb_a12_3P)
+//	.dout2	(w_yuv2rgb_a12_3P)
+	.dout2	(w_rom_a12_dout2)
 );
-assign	w_rgb2yuv_a12_3P	= w_rom_a12_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+generate
+	if (OUTPUT_REG == "TRUE")
+	begin
+		assign	w_rgb2yuv_a12_3P	= r_rom_a12_dout1_P;
+		assign	w_yuv2rgb_a12_3P	= r_rom_a12_dout2_P;
+	end
+	else
+	begin
+		assign	w_rgb2yuv_a12_3P	= w_rom_a12_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+		assign	w_yuv2rgb_a12_3P	= w_rom_a12_dout2;
+	end
+endgenerate
 
 true_dual_port_ram
 #(
@@ -598,8 +650,8 @@ true_dual_port_ram
 	.ADDR_WIDTH(1+R_DEPTH),
 	.WRITE_MODE_1("WRITE_FIRST"),
 	.WRITE_MODE_2("WRITE_FIRST"),
-	.OUTPUT_REG_1("FALSE"),
-	.OUTPUT_REG_2("FALSE"),
+	.OUTPUT_REG_1(OUTPUT_REG),
+	.OUTPUT_REG_2(OUTPUT_REG),
 	.RAM_INIT_FILE(ROM_A20),
 	.RAM_INIT_RADIX("HEX")
 )
@@ -632,7 +684,7 @@ true_dual_port_ram
 	.ADDR_WIDTH(1+G_DEPTH),
 	.WRITE_MODE_1("WRITE_FIRST"),
 	.WRITE_MODE_2("WRITE_FIRST"),
-	.OUTPUT_REG_1("FALSE"),
+	.OUTPUT_REG_1(OUTPUT_REG),
 	.OUTPUT_REG_2("TRUE"),
 	.RAM_INIT_FILE(ROM_A21),
 	.RAM_INIT_RADIX("HEX")
@@ -654,9 +706,20 @@ inst_rom_a21
 	.we2	(1'b0),
 	.addr2	({c_yuv2rgb_sel, r_yuv2rgb_u_1P[U_DEPTH-1:0]}),
 	.din2	({YUV2RGB_TWOCOMP_WIDTH{1'b0}}),
-	.dout2	(w_yuv2rgb_a21_3P)
+//	.dout2	(w_yuv2rgb_a21_3P)
+	.dout2	(w_rom_a21_dout2)
 );
 assign	w_rgb2yuv_a21_2P	= w_rom_a21_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+generate
+	if (OUTPUT_REG == "TRUE")
+	begin
+		assign	w_yuv2rgb_a21_3P	= r_rom_a21_dout2_P;
+	end
+	else
+	begin
+		assign	w_yuv2rgb_a21_3P	= w_rom_a21_dout2;
+	end
+endgenerate
 
 true_dual_port_ram
 #(
@@ -666,7 +729,7 @@ true_dual_port_ram
 	.ADDR_WIDTH(1+B_DEPTH),
 	.WRITE_MODE_1("WRITE_FIRST"),
 	.WRITE_MODE_2("WRITE_FIRST"),
-	.OUTPUT_REG_1("TRUE"),
+	.OUTPUT_REG_1(OUTPUT_REG),
 	.OUTPUT_REG_2("FALSE"),
 	.RAM_INIT_FILE(ROM_A22),
 	.RAM_INIT_RADIX("HEX")
@@ -691,7 +754,48 @@ inst_rom_a22
 //	.dout2	(w_yuv2rgb_a22_2P),
 	.dout2	()
 );
-assign	w_rgb2yuv_a22_3P	= w_rom_a22_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+generate
+	if (OUTPUT_REG == "TRUE")
+	begin
+		assign	w_rgb2yuv_a22_3P	= r_rom_a22_dout1_P;
+		
+		assign	w_rgb2yuv_de		= r_rgb2yuv_de_P;
+		assign	w_yuv2rgb_de		= r_yuv2rgb_de_P;
+	end
+	else
+	begin
+		assign	w_rgb2yuv_a22_3P	= w_rom_a22_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+		
+		assign	w_rgb2yuv_de		= i_rgb2yuv_de;
+		assign	w_yuv2rgb_de		= i_yuv2rgb_de;
+	end
+endgenerate
+
+always@(posedge i_arst or posedge i_pclk)
+begin
+	if (i_arst)
+	begin
+		r_rgb2yuv_de_P		<= 1'b0;
+		r_yuv2rgb_de_P		<= 1'b0;
+		r_rom_a02_dout1_P	<= {RGB2YUV_TWOCOMP_WIDTH{1'b0}};
+		r_rom_a02_dout2_P	<= {YUV2RGB_TWOCOMP_WIDTH{1'b0}};
+		r_rom_a12_dout1_P	<= {RGB2YUV_TWOCOMP_WIDTH{1'b0}};
+		r_rom_a12_dout2_P	<= {YUV2RGB_TWOCOMP_WIDTH{1'b0}};
+		r_rom_a21_dout2_P	<= {YUV2RGB_TWOCOMP_WIDTH{1'b0}};
+		r_rom_a22_dout1_P	<= {RGB2YUV_TWOCOMP_WIDTH{1'b0}};
+	end
+	else
+	begin
+		r_rgb2yuv_de_P		<= i_rgb2yuv_de;
+		r_yuv2rgb_de_P		<= i_yuv2rgb_de;
+		r_rom_a02_dout1_P	<= w_rom_a02_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+		r_rom_a02_dout2_P	<= w_rom_a02_dout2;
+		r_rom_a12_dout1_P	<= w_rom_a12_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+		r_rom_a12_dout2_P	<= w_rom_a12_dout2;
+		r_rom_a21_dout2_P	<= w_rom_a21_dout2;
+		r_rom_a22_dout1_P	<= w_rom_a22_dout1[RGB2YUV_TWOCOMP_WIDTH-1:0];
+	end
+end
 
 assign	o_rgb2yuv_de	= r_rgb2yuv_de_5P;
 assign	o_rgb2yuv_y		= r_rgb2yuv_y_5P;

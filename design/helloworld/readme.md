@@ -15,4 +15,4 @@ You define the peripheral blocks using the Efinity Interface Designer. The PyAPI
 https://github.com/Efinix-Inc/xyloni/tree/master/bsp <br/>
 allow you to interact with the Interface Designer to bring up a new design quickly.
 
-Refer to the Efinity Interface Designer Python API [https://www.efinixinc.com/support/docsdl.php?s=ef&pn=UG-EFN-PYAPI] for details.
+Refer to the [Efinity Interface Designer Python API](https://www.efinixinc.com/support/docsdl.php?s=ef&pn=UG-EFN-PYAPI) for details.

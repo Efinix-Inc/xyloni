@@ -7,10 +7,12 @@ https://github.com/Efinix-Inc/xyloni/tree/master/bsp <br/>
 So you can get started using these interfaces more easily. <br/>
 
 ## Concept
-In Efinity, an FPGA is defined as <br/>
-1. core - the design you done in RTL <br/>
-2. peripheral - I/Os, PLLs and any hard block connect to core <br/>
+In Efinity, the FPGA has <br/>
+* Core - the RTL design <br/>
+* Interface - I/Os, PLLs, and any peripheral hard blocks that connect to the core <br/>
 
-Peripheral is taken care by Interface Designer, a tool in Efinity. The PyAPI scripts under <br/>
+You define the peripheral blocks using the Efinity Interface Designer. The PyAPI scripts under <br/>
 https://github.com/Efinix-Inc/xyloni/tree/master/bsp <br/>
-allow user to interact with Interface Designer to bring up a new designer quickly.
+allow you to interact with the Interface Designer to bring up a new design quickly.
+
+Refer to the Efinity Interface Designer Python API [https://www.efinixinc.com/support/docsdl.php?s=ef&pn=UG-EFN-PYAPI] for details.

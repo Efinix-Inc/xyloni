@@ -34,7 +34,7 @@ void main() {
         led_check = cfg.exampleLED1 & 0x01;
         led_check |= (cfg.exampleLED2 & 0x01) <<1;
         
-        if((example_register_read() & 0x03) ==  led_check))
+        if((example_register_read() & 0x03) ==  led_check)
         {
             gpio_setOutput(BSP_LED_GPIO, gpio_read ^ BSP_LED_MASK);
             gpio_read = ~gpio_read;

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE target SYSTEM "gdb-target.dtd">
+<!-- Default Enabled --> 
+<feature name="org.gnu.gdb.riscv.csr">
+<enum id="arch" size="4"> 
+  <evalue name="RV32" value="1"/>
+  <evalue name="RV64" value="2"/>
+  <evalue name="RV128" value="3"/>
+</enum>
+
+<!-- Machine Information Registers (0xF11 - 0xF14) -->
+<reg name="mhartid" bitsize="32" regnum="3925" save-restore="no" type="uint32" group="CSR" description="Hardware thread ID"/> <!-- 0xF14 -->
+<!-- Machine Information Registers (0xF11 - 0xF14) End -->
+
+<!-- Machine Trap Setup (0x300 - 0x305) -->
+<struct id="mstatus_reg" size="4"> 
+  <field name="MPP" start="11" end="12"/>
+  <field name="MPIE" start="7" end="7"/>
+  <field name="MIE" start="3" end="3"/>
+</struct>
+<reg name="mstatus" bitsize="32" regnum="833" save-restore="no" type="mstatus_reg"	 group="CSR" description="Machine status register"/> <!-- 0x300 -->
+
+<struct id="mie_reg" size="4">
+  <field name="MEIE" start="11" end="11"/>
+  <field name="MTIE" start="7" end="7"/>
+  <field name="MSIE" start="3" end="3"/>
+</struct>
+<reg name="mie" bitsize="32" regnum="837" save-restore="no" type="mie_reg" group="CSR" description="Machine interrupt-enable register"/> <!-- 0x304 -->
+
+<enum id="mtvec_reg_mode" size="4">
+  <evalue name="direct" value="0"/>
+  <evalue name="vectored" value="1"/>
+</enum>
+<struct id="mtvec_reg" size="4">
+  <field name="base" start="2" end="31"/>
+  <field name="mode" start="0" end="1"  type="mtvec_reg_mode"/>
+</struct>
+<reg name="mtvec" bitsize="32" regnum="838" save-restore="no" type="mtvec_reg" group="CSR" description="Machine trap-handler base address"/> <!-- 0x305 -->
+<!-- Machine Trap Setup (0x300 - 0x305) End -->
+
+<!-- Machine Trap Handling (0x340 - 0x344)-->
+<reg name="mscratch" bitsize="32" regnum="897" save-restore="no" type="uint32" group="CSR" description="Scratch register for machine trap handlers"/> <!-- 0x340 -->
+<reg name="mepc" bitsize="32" regnum="898" save-restore="no" type="code_ptr" group="CSR" description="Machine exception program counter"/> <!-- 0x341 -->
+
+<struct id="mcause_reg" size="4">
+  <field name="interrupt" start="31" end="31"/>
+  <field name="exception_code" start="0" end="3"/>
+</struct>
+<reg name="mcause" bitsize="32" regnum="899" save-restore="no" type="mcause_reg" group="CSR" description="Machine trap cause"/> <!-- 0x342 -->
+<reg name="mtval" bitsize="32" regnum="900" save-restore="no" type="uint32" group="CSR" description="Machine bad address or instruction"/> <!-- 0x343 -->
+<struct id="mip_reg" size="4">
+  <field name="MIEP" start="11" end="11"/>
+  <field name="MTIP" start="7" end="7"/>
+  <field name="MSIP" start="3" end="3"/>
+</struct>
+<reg name="mip" bitsize="32" regnum="901" save-restore="no" type="mip_reg" group="CSR" description="Machine interrupt pending"/> <!-- 0x344 -->
+<!-- Machine Trap Handling (0x340 - 0x344) End -->
+
+</feature>

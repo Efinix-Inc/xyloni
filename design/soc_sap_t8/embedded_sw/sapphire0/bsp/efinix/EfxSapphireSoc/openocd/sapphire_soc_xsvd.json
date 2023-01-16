@@ -1,0 +1,1984 @@
+{
+    "schemaVersion": "0.2.4",
+    "contentVersion": "0.2.0",
+    "headerVersion": "0.2.0",
+    "license": "MIT",
+    "copyright": "Copyright (C) 2013-2022 Efinix Inc. All rights reserved.",
+    "device": {
+        "sapphire SoC": {
+            "version": "1.0.0",
+            "displayName": "Sapphire SoC",
+            "description": "Configurable, cached soft RISC-V SoC, with optional memory controller interface.",
+            "supplier": {
+                "name": "efinix",
+                "id": "1",
+                "displayName": "Efinix",
+                "fullName": "Efinix, Inc.",
+                "contact": "sales-na@efinixinc.com"
+            },
+            "busWidth": "32",
+            "resetMask": "all",
+            "resetValue": "0x00000000",
+            "access": "rw",
+            "headerGuardPrefix": "SAPPHIRE_SOC_",
+            "headerTypePrefix": "sapphire_soc_",
+            "headerInterruptPrefix": "sapphire_soc_interrupt_global_",
+            "headerInterruptEnumPrefix": "riscv_interrupts_global_",
+            "revision": "r0p0",
+            "numInterrupts": "26",
+            "priorityBits": "3",
+            "regWidth": "32",
+            "cores": {
+                "VexRiscv": {
+                    "harts": "1",
+                    "isa": "RV32I",
+                    "isaVersion": "2.2",
+                    "mpu": "none",
+                    "mmu": "true",
+                    "numLocalInterrupts": "16"
+                }
+            },
+            "peripherals": {
+                "clint": {
+                    "description": "Core Local Interrupt (CLINT) Peripheral",
+                    "baseAddress": "0xf8b00000",
+                    "size": "0x10000",
+                    "registers": {
+                        "PIP": {
+                            "description": "MSIP (Machine-mode Software Interrupts) Register per Hart",
+                            "addressOffset": "0x0000",
+                            "fields": {
+                                "softInt": {
+                                    "description": "Machine mode software interrupt.",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1"
+                                }
+                            }
+                        },
+                        "mtimecmp(lo)": {
+                            "description": "Machine Time Compare Registers per Hart (Lower 32 bit)",
+                            "addressOffset": "0x4000",
+                            "arraySize": "1",
+                            "access": "w",
+                            "regWidth": "32"
+                        },
+                        "mtimecmp(hi)": {
+                            "description": "Machine Time Compare Registers per Hart (Higher 32 bit)",
+                            "addressOffset": "0x4004",
+                            "arraySize": "1",
+                            "access": "w",
+                            "regWidth": "32"
+                        },
+                        "mtime(lo)": {
+                            "description": "Machine Time Register (Lower 32 bit)",
+                            "addressOffset": "0xBFF8",
+                            "access": "r",
+                            "regWidth": "32"
+                        },
+                        "mtime(hi)": {
+                            "description": "Machine Time Register (Higher 32 bit)",
+                            "addressOffset": "0xBFFC",
+                            "access": "r",
+                            "regWidth": "32"
+                        }
+                    }
+                },
+                "plic": {
+                    "description": "Platform-Level Interrupt Controller (PLIC) Peripheral",
+                    "baseAddress": "0xf8c00000",
+                    "size": "0x400000",
+                    "registers": {
+                        "pendings": {
+                            "description": "Interrupt Pending Bits Registers",
+                            "addressOffset": "0x1000",
+                            "access": "r",
+                            "fields": {
+                                "uart0_ip": {
+                                    "description": "UART 0 Interrupt Pending",
+                                    "bitOffset": "1",
+                                    "bitWidth": "1"
+                                },
+                                "uart1_ip": {
+                                    "description": "UART 1 Interrupt Pending",
+                                    "bitOffset": "2",
+                                    "bitWidth": "1"
+                                },
+                                "uart2_ip": {
+                                    "description": "UART 2 Interrupt Pending",
+                                    "bitOffset": "3",
+                                    "bitWidth": "1"
+                                },
+                                "spi0_ip": {
+                                    "description": "SPI 0 Interrupt Pending",
+                                    "bitOffset": "4",
+                                    "bitWidth": "1"
+                                },
+                                "spi1_ip": {
+                                    "description": "SPI 1 Interrupt Pending",
+                                    "bitOffset": "5",
+                                    "bitWidth": "1"
+                                },
+                                "spi2_ip": {
+                                    "description": "SPI 2 Interrupt Pending",
+                                    "bitOffset": "6",
+                                    "bitWidth": "1"
+                                },
+                                "i2c0_ip": {
+                                    "description": "I2C 0 Interrupt Pending",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1"
+                                },
+                                "i2c1_ip": {
+                                    "description": "I2C 1 Interrupt Pending",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1"
+                                },
+                                "i2c2_ip": {
+                                    "description": "I2C 2 Interrupt Pending",
+                                    "bitOffset": "10",
+                                    "bitWidth": "1"
+                                },
+                                "gpio0i0_ip": {
+                                    "description": "GPIO 0 Interrupt 0 Pending",
+                                    "bitOffset": "12",
+                                    "bitWidth": "1"
+                                },
+                                "gpio0i1_ip": {
+                                    "description": "GPIO 0 Interrupt 1 Pending",
+                                    "bitOffset": "13",
+                                    "bitWidth": "1"
+                                },
+                                "gpio1i0_ip": {
+                                    "description": "GPIO 1 Interrupt 0 Pending",
+                                    "bitOffset": "14",
+                                    "bitWidth": "1"
+                                },
+                                "gpio1i1_ip": {
+                                    "description": "GPIO 1 Interrupt 1 Pending",
+                                    "bitOffset": "15",
+                                    "bitWidth": "1"
+                                },
+                                "userIntA_ip": {
+                                    "description": "User Interrupt A Pending",
+                                    "bitOffset": "16",
+                                    "bitWidth": "1"
+                                },
+                                "userIntB_ip": {
+                                    "description": "User Interrupt B Pending",
+                                    "bitOffset": "16",
+                                    "bitWidth": "1"
+                                },
+                                "userIntC_ip": {
+                                    "description": "User Interrupt C Pending",
+                                    "bitOffset": "22",
+                                    "bitWidth": "1"
+                                },
+                                "userIntD_ip": {
+                                    "description": "User Interrupt D Pending",
+                                    "bitOffset": "23",
+                                    "bitWidth": "1"
+                                },
+                                "userIntE_ip": {
+                                    "description": "User Interrupt E Pending",
+                                    "bitOffset": "24",
+                                    "bitWidth": "1"
+                                },
+                                "userIntF_ip": {
+                                    "description": "User Interrupt F Pending",
+                                    "bitOffset": "25",
+                                    "bitWidth": "1"
+                                },
+                                "userIntG_ip": {
+                                    "description": "User Interrupt G Pending",
+                                    "bitOffset": "26",
+                                    "bitWidth": "1"
+                                },
+                                "userIntH_ip": {
+                                    "description": "User Interrupt H Pending",
+                                    "bitOffset": "27",
+                                    "bitWidth": "1"
+                                },
+                                "userTim0_ip": {
+                                    "description": "User Timer Interrupt 0 Pending",
+                                    "bitOffset": "19",
+                                    "bitWidth": "1"
+                                },
+                                "userTim1_ip": {
+                                    "description": "User Timer Interrupt 1 Pending",
+                                    "bitOffset": "20",
+                                    "bitWidth": "1"
+                                },
+                                "userTim2_ip": {
+                                    "description": "User Timer Interrupt 2 Pending",
+                                    "bitOffset": "21",
+                                    "bitWidth": "1"
+                                },
+                                "axiA_ip": {
+                                    "description": "AXI A Interrupt Pending",
+                                    "bitOffset": "21",
+                                    "bitWidth": "1"
+                                }
+                            }
+                        }
+                    },
+                    "clusters": {
+                        "priorities": {
+                            "description": "Interrupt Priorities Registers",
+                            "addressOffset": "0x0000",
+                            "clusters": {
+                                "uart0": {
+                                    "addressOffset": "0x0004",
+                                    "description": "The priority for UART 0 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "uart1": {
+                                    "addressOffset": "0x0008",
+                                    "description": "The priority for UART 1 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "uart2": {
+                                    "addressOffset": "0x000C",
+                                    "description": "The priority for UART 2 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userTimer0": {
+                                    "addressOffset": "0x004C",
+                                    "description": "The priority for User Timer 0 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userTimer1": {
+                                    "addressOffset": "0x0050",
+                                    "description": "The priority for User Timer 1 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userTimer2": {
+                                    "addressOffset": "0x0054",
+                                    "description": "The priority for User Timer 2 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "spi0": {
+                                    "addressOffset": "0x0010",
+                                    "description": "The priority for SPI 0 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "spi1": {
+                                    "addressOffset": "0x0014",
+                                    "description": "The priority for SPI 1 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "spi2": {
+                                    "addressOffset": "0x0018",
+                                    "description": "The priority for SPI 2 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "i2c0": {
+                                    "addressOffset": "0x0020",
+                                    "description": "The priority for I2C 0 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "i2c1": {
+                                    "addressOffset": "0x0024",
+                                    "description": "The priority for I2C 1 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "i2c2": {
+                                    "addressOffset": "0x0028",
+                                    "description": "The priority for I2C 2 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "gpio0i0": {
+                                    "addressOffset": "0x0030",
+                                    "description": "The priority for GPIO 0 Interrupt 0 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "gpio0i1": {
+                                    "addressOffset": "0x0034",
+                                    "description": "The priority for GPIO 0 Interrupt 1 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "gpio1i0": {
+                                    "addressOffset": "0x0038",
+                                    "description": "The priority for GPIO 1 Interrupt 0 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "gpio1i1": {
+                                    "addressOffset": "0x003C",
+                                    "description": "The priority for GPIO 1 Interrupt 1 global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userIntA": {
+                                    "addressOffset": "0x0040",
+                                    "description": "The priority for User Interrupt A global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userIntB": {
+                                    "addressOffset": "0x0044",
+                                    "description": "The priority for User Interrupt B global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userIntC": {
+                                    "addressOffset": "0x0058",
+                                    "description": "The priority for User Interrupt C global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userIntD": {
+                                    "addressOffset": "0x005C",
+                                    "description": "The priority for User Interrupt D global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userIntE": {
+                                    "addressOffset": "0x0060",
+                                    "description": "The priority for User Interrupt E global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userIntF": {
+                                    "addressOffset": "0x0064",
+                                    "description": "The priority for User Interrupt F global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userIntG": {
+                                    "addressOffset": "0x0068",
+                                    "description": "The priority for User Interrupt G global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "userIntH": {
+                                    "addressOffset": "0x006C",
+                                    "description": "The priority for User Interrupt H global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "axiA": {
+                                    "addressOffset": "0x0078",
+                                    "description": "The priority for AXI A Interface global interrupt",
+                                    "registers": {
+                                        "priority": {
+                                            "description": "The Priority Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "enablestarget0": {
+                            "description": "Hart 0 Interrupt Enable Bits",
+                            "addressOffset": "0x00002000",
+                            "clusters": {
+                                "m": {
+                                    "addressOffset": "0x0000",
+                                    "description": "Hart 0 M-mode Interrupt Enable Bits",
+                                    "registers": {
+                                        "enables": {
+                                            "description": "Interrupt Enable Bits Registers",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "userInterruptC": {
+                                                    "description": "User Interrupt C Enable Bit",
+                                                    "bitOffset": "22",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userInterruptF": {
+                                                    "description": "User Interrupt F Enable Bit",
+                                                    "bitOffset": "25",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userInterruptA": {
+                                                    "description": "User Interrupt A Enable Bit",
+                                                    "bitOffset": "16",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userInterruptE": {
+                                                    "description": "User Interrupt E Enable Bit",
+                                                    "bitOffset": "24",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userInterruptD": {
+                                                    "description": "User Interrupt D Enable Bit",
+                                                    "bitOffset": "23",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userInterruptG": {
+                                                    "description": "User Interrupt G Enable Bit",
+                                                    "bitOffset": "26",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userInterruptH": {
+                                                    "description": "User Interrupt H Enable Bit",
+                                                    "bitOffset": "27",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userInterruptB": {
+                                                    "description": "User Interrupt B Enable Bit",
+                                                    "bitOffset": "17",
+                                                    "bitWidth": "1"
+                                                },
+                                                "axiA": {
+                                                    "description": "AXI A Interrupt Enable Bit",
+                                                    "bitOffset": "30",
+                                                    "bitWidth": "1"
+                                                },
+                                                "uart1": {
+                                                    "description": "UART 1 Interrupt Enable Bit",
+                                                    "bitOffset": "2",
+                                                    "bitWidth": "1"
+                                                },
+                                                "uart0": {
+                                                    "description": "UART 0 Interrupt Enable Bit",
+                                                    "bitOffset": "1",
+                                                    "bitWidth": "1"
+                                                },
+                                                "uart2": {
+                                                    "description": "UART 2 Interrupt Enable Bit",
+                                                    "bitOffset": "3",
+                                                    "bitWidth": "1"
+                                                },
+                                                "spi0": {
+                                                    "description": "SPI 0 Interrupt Enable Bit",
+                                                    "bitOffset": "4",
+                                                    "bitWidth": "1"
+                                                },
+                                                "spi1": {
+                                                    "description": "SPI 1 Interrupt Enable Bit",
+                                                    "bitOffset": "5",
+                                                    "bitWidth": "1"
+                                                },
+                                                "spi2": {
+                                                    "description": "SPI 2 Interrupt Enable Bit",
+                                                    "bitOffset": "6",
+                                                    "bitWidth": "1"
+                                                },
+                                                "i2c0": {
+                                                    "description": "I2C 0 Interrupt Enable Bit",
+                                                    "bitOffset": "8",
+                                                    "bitWidth": "1"
+                                                },
+                                                "i2c2": {
+                                                    "description": "I2C 2 Interrupt Enable Bit",
+                                                    "bitOffset": "10",
+                                                    "bitWidth": "1"
+                                                },
+                                                "i2c1": {
+                                                    "description": "I2C 1 Interrupt Enable Bit",
+                                                    "bitOffset": "9",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userTim1": {
+                                                    "description": "User Timer 1 Interrupt Enable Bit",
+                                                    "bitOffset": "20",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userTim2": {
+                                                    "description": "User Timer 2 Interrupt Enable Bit",
+                                                    "bitOffset": "21",
+                                                    "bitWidth": "1"
+                                                },
+                                                "userTim0": {
+                                                    "description": "User Timer 0 Interrupt Enable Bit",
+                                                    "bitOffset": "19",
+                                                    "bitWidth": "1"
+                                                },
+                                                "gpio0i0": {
+                                                    "description": "GPIO 0 Interrupt 0 Interrupt Enable Bit",
+                                                    "bitOffset": "12",
+                                                    "bitWidth": "1"
+                                                },
+                                                "gpio0i1": {
+                                                    "description": "GPIO 0 Interrupt 1 Interrupt Enable Bit",
+                                                    "bitOffset": "13",
+                                                    "bitWidth": "1"
+                                                },
+                                                "gpio1i0": {
+                                                    "description": "GPIO 1 Interrupt 0 Interrupt Enable Bit",
+                                                    "bitOffset": "14",
+                                                    "bitWidth": "1"
+                                                },
+                                                "gpio1i1": {
+                                                    "description": "GPIO 1 Interrupt 1 Interrupt Enable Bit",
+                                                    "bitOffset": "15",
+                                                    "bitWidth": "1"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "target0": {
+                            "description": "Hart 0 Interrupt Thresholds",
+                            "addressOffset": "0x00200000",
+                            "clusters": {
+                                "m": {
+                                    "addressOffset": "0x0000",
+                                    "description": "Hart 0 M-Mode Interrupt Threshold",
+                                    "registers": {
+                                        "threshold": {
+                                            "description": "The Priority Threshold Register",
+                                            "addressOffset": "0x0000",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The priority threshold value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "2",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        },
+                                        "claimcomplete": {
+                                            "description": "The Interrupt Claim/Completion Register",
+                                            "addressOffset": "0x0004",
+                                            "fields": {
+                                                "value": {
+                                                    "description": "The Interrupt Claim/Completion value",
+                                                    "bitOffset": "0",
+                                                    "bitWidth": "5",
+                                                    "resetMask": "all",
+                                                    "resetValue": "0x0"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "interrupts": {
+                        "userInterruptA": {
+                            "description": "User Interrupt A",
+                            "value": "16"
+                        }
+                    }
+                },
+                "gpio 0": {
+                    "description": "General Purpose Input/Output Controller (GPIO) 0 Peripheral",
+                    "baseAddress": "0xf8016000",
+                    "size": "0x100",
+                    "registers": {
+                        "Input": {
+                            "description": "Input Pin Value Register",
+                            "addressOffset": "0x0000",
+                            "fields": {
+                                "bit": {
+                                    "repeatGenerator": "0-15",
+                                    "description": "Input Bit Field",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "headerName": "",
+                                    "access": "r"
+                                }
+                            }
+                        },
+                        "output": {
+                            "description": "Output Register",
+                            "addressOffset": "0x0004",
+                            "fields": {
+                                "bit": {
+                                    "repeatGenerator": "0-15",
+                                    "description": "Output Bit Field",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "headerName": ""
+                                }
+                            }
+                        },
+                        "outputen": {
+                            "description": "Output Enable Register",
+                            "addressOffset": "0x0008",
+                            "fields": {
+                                "bit": {
+                                    "repeatGenerator": "0-15",
+                                    "description": "Pin Output Enable Bit Field",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "headerName": ""
+                                }
+                            }
+                        },
+                        "riseie": {
+                            "description": "Rise Interrupt Enable Register",
+                            "addressOffset": "0x0020",
+                            "fields": {
+                                "bit": {
+                                    "repeatGenerator": "0-1",
+                                    "description": "Rise Interrupt Enable Bit Field",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "headerName": ""
+                                }
+                            }
+                        },
+                        "fallie": {
+                            "description": "Fall Interrupt Enable Register",
+                            "addressOffset": "0x0024",
+                            "fields": {
+                                "bit": {
+                                    "repeatGenerator": "0-1",
+                                    "description": "Fall Interrupt Enable Bit Field",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "headerName": ""
+                                }
+                            }
+                        },
+                        "highie": {
+                            "description": "High Interrupt Enable Register",
+                            "addressOffset": "0x0028",
+                            "fields": {
+                                "bit": {
+                                    "repeatGenerator": "0-1",
+                                    "description": "High Interrupt Enable Bit Field",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "headerName": ""
+                                }
+                            }
+                        },
+                        "lowie": {
+                            "description": "Low Interrupt Enable Register",
+                            "addressOffset": "0x002C",
+                            "fields": {
+                                "bit": {
+                                    "repeatGenerator": "0-1",
+                                    "description": "Low Interrupt Enable Bit Field",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "headerName": ""
+                                }
+                            }
+                        }
+                    },
+                    "interrupts": {
+                        "gpio0int0": {
+                            "description": "GPIO0 Interrupt 0",
+                            "value": "12"
+                        },
+                        "gpio0int1": {
+                            "description": "GPIO0 Interrupt 1",
+                            "value": "13"
+                        }
+                    }
+                },
+                "uart0": {
+                    "description": "Universal Asynchronous Receiver/Transmitter (UART) 0 Peripheral",
+                    "baseAddress": "0xf8010000",
+                    "size": "0x40",
+                    "resetMask": "none",
+                    "groupName": "uart",
+                    "registers": {
+                        "data": {
+                            "description": "Transmit Data Register",
+                            "addressOffset": "0x0000",
+                            "fields": {
+                                "data": {
+                                    "description": "Transmit/ Receive data",
+                                    "bitOffset": "0",
+                                    "bitWidth": "8"
+                                },
+                                "dataValid": {
+                                    "description": "Read data valid",
+                                    "bitOffset": "16",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                }
+                            }
+                        },
+                        "status": {
+                            "description": "Status Register",
+                            "addressOffset": "0x0004",
+                            "fields": {
+                                "txInterruptEnable": {
+                                    "description": "Enable interrupt when TX FIFO is empty",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1"
+                                },
+                                "rxInterruptEnable": {
+                                    "description": "Enable interrupt when RX FIFO is not empty",
+                                    "bitOffset": "1",
+                                    "bitWidth": "1"
+                                },
+                                "txInterrupt": {
+                                    "description": "Interrupt when TX FIFO is empty",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                },
+                                "rxInterrupt": {
+                                    "description": "Interrupt when RX FIFO is not empty",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                },
+                                "writeBusy": {
+                                    "description": "Write operation in progress",
+                                    "bitOffset": "15",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                },
+                                "writeAvailability": {
+                                    "description": "UART FIFO availability",
+                                    "bitOffset": "16",
+                                    "bitWidth": "8",
+                                    "access": "r"
+                                },
+                                "readOccupancy": {
+                                    "description": "UART FIFO occupancy",
+                                    "bitOffset": "24",
+                                    "bitWidth": "8",
+                                    "access": "r"
+                                }
+                            }
+                        },
+                        "clockDivider": {
+                            "description": "Clock Divider Register",
+                            "addressOffset": "0x0008",
+                            "fields": {
+                                "divFac": {
+                                    "description": "Divider factor for UART baud rate",
+                                    "bitOffset": "0",
+                                    "bitWidth": "20",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "config": {
+                            "description": "Config Register",
+                            "addressOffset": "0x000C",
+                            "fields": {
+                                "dataLen": {
+                                    "description": "Data length",
+                                    "bitOffset": "0",
+                                    "bitWidth": "3",
+                                    "access": "w"
+                                },
+                                "parity": {
+                                    "description": "Parity bit number; 0: None; 1: Even; 2: Odd",
+                                    "bitOffset": "8",
+                                    "bitWidth": "2",
+                                    "access": "w"
+                                },
+                                "stop": {
+                                    "description": "Stop bit number",
+                                    "bitOffset": "16",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "errorBreak": {
+                            "description": "Error Break Register",
+                            "addressOffset": "0x0010",
+                            "fields": {
+                                "readError": {
+                                    "description": "Read error. Write 1 to reset error",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1"
+                                },
+                                "readOverflow": {
+                                    "description": "Read overflow error. Write 1 to reset error",
+                                    "bitOffset": "1",
+                                    "bitWidth": "1"
+                                },
+                                "readBreak": {
+                                    "description": "Read break occur",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                },
+                                "breakDetect": {
+                                    "description": "Break detected during read operation. Write 1 to reset error",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1"
+                                },
+                                "enableBreak": {
+                                    "description": "Enable break",
+                                    "bitOffset": "10",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "disableBreak": {
+                                    "description": "Disable break",
+                                    "bitOffset": "11",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                }
+                            }
+                        }
+                    },
+                    "interrupts": {
+                        "uart0": {
+                            "description": "UART0 Interrupt",
+                            "value": "1"
+                        }
+                    }
+                },
+                "spi0": {
+                    "description": "Serial Peripheral Interface (SPI) 0 Peripheral",
+                    "baseAddress": "0xf8014000",
+                    "size": "0x1000",
+                    "resetMask": "none",
+                    "groupName": "spi",
+                    "registers": {
+                        "cmd": {
+                            "description": "Command Register",
+                            "addressOffset": "0x0000",
+                            "fields": {
+                                "data": {
+                                    "description": "FIFO data value transmit/receive",
+                                    "bitOffset": "0",
+                                    "bitWidth": "8"
+                                },
+                                "wr": {
+                                    "description": "Write trigger",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "rd": {
+                                    "description": "Read trigger",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "ss": {
+                                    "description": "SPI chip select. Configure up to 8 chip select ID numbers",
+                                    "bitOffset": "11",
+                                    "bitWidth": "3"
+                                }
+                            }
+                        },
+                        "rsp": {
+                            "description": "Response Register",
+                            "addressOffset": "0x0004",
+                            "fields": {
+                                "fifoAvailability": {
+                                    "description": "FIFO availability",
+                                    "bitOffset": "0",
+                                    "bitWidth": "9",
+                                    "access": "r"
+                                },
+                                "fifoOccupancy": {
+                                    "description": "FIFO Occupancy",
+                                    "bitOffset": "16",
+                                    "bitWidth": "9",
+                                    "access": "r"
+                                }
+                            }
+                        },
+                        "config": {
+                            "description": "Config Register",
+                            "addressOffset": "0x0008",
+                            "fields": {
+                                "cpol": {
+                                    "description": "Clock polarity setting",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "cpha": {
+                                    "description": "Clock phase setting",
+                                    "bitOffset": "1",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "mode": {
+                                    "description": "SPI Mode selection. 0: Full duplex dual line. 1: Half-duplex dual line. 2: Half-duplex quad line",
+                                    "bitOffset": "4",
+                                    "bitWidth": "2",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "interrupt": {
+                            "description": "Interrupt Register",
+                            "addressOffset": "0x000C",
+                            "fields": {
+                                "cmdIntEn": {
+                                    "description": "Command FIFO empty interrupt enable",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1"
+                                },
+                                "rspIntEn": {
+                                    "description": "Read FIFO not empty interrupt enable",
+                                    "bitOffset": "1",
+                                    "bitWidth": "1"
+                                },
+                                "cmdInt": {
+                                    "description": "Command FIFO empty interrupt pending",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1"
+                                },
+                                "rspInt": {
+                                    "description": "Read FIFO not empty interrupt pending",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1"
+                                },
+                                "cmdValid": {
+                                    "description": "Command FIFO is not empty",
+                                    "bitOffset": "16",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                }
+                            }
+                        },
+                        "clkDiv": {
+                            "description": "Clock Divider Register",
+                            "addressOffset": "0x0020",
+                            "fields": {
+                                "clkDiv": {
+                                    "description": "Clock divider, SPI frequency = FCLK / ((clockDivider+1)*2",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "ssSetup": {
+                            "description": "ssSetup Register",
+                            "addressOffset": "0x0024",
+                            "fields": {
+                                "ssSetup": {
+                                    "description": "Time between the chip select enable and the next byte",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "ssHold": {
+                            "description": "ssHold Register",
+                            "addressOffset": "0x0028",
+                            "fields": {
+                                "ssHold": {
+                                    "description": "Time between the last byte transmission and the chip select disable",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "ssDisable": {
+                            "description": "ssDisable Register",
+                            "addressOffset": "0x002C",
+                            "fields": {
+                                "ssDisable": {
+                                    "description": "Time between the chip select disable and the chip select enable",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "ssActiveHigh": {
+                            "description": "ssActiveHigh Register",
+                            "addressOffset": "0x0030",
+                            "fields": {
+                                "ssActiveHigh": {
+                                    "description": "These bits correspond to the hardware SPI chip select. 0: Chip select is active low. 1: Chip select is active high.",
+                                    "bitOffset": "0",
+                                    "bitWidth": "8",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "cmd32_0": {
+                            "description": "cmd32_0 Register. Large data transmit",
+                            "addressOffset": "0x0050",
+                            "fields": {
+                                "data": {
+                                    "description": "Trigger to transmit data. The data width is configurable up to 16 bits.",
+                                    "bitOffset": "0",
+                                    "bitWidth": "16",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "cmd32_1": {
+                            "description": "cmd32_1 Register. Large data transmit",
+                            "addressOffset": "0x0054",
+                            "fields": {
+                                "data": {
+                                    "description": "Trigger to transmit data. The data width is configurable up to 16 bits.",
+                                    "bitOffset": "0",
+                                    "bitWidth": "16",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "rsp32": {
+                            "description": "rsp32 Register. Large data transmit",
+                            "addressOffset": "0x0058",
+                            "fields": {
+                                "data": {
+                                    "description": "Trigger to receive data. The data width is configurable up to 16 bits.",
+                                    "bitOffset": "0",
+                                    "bitWidth": "16",
+                                    "access": "w"
+                                }
+                            }
+                        }
+                    },
+                    "interrupts": {
+                        "spi0": {
+                            "description": "SPI0 Interrupt",
+                            "value": "4"
+                        }
+                    }
+                },
+                "spi1": {
+                    "description": "Serial Peripheral Interface (SPI) 1 Peripheral",
+                    "baseAddress": "0xf8015000",
+                    "size": "0x1000",
+                    "resetMask": "none",
+                    "groupName": "spi",
+                    "registers": {
+                        "cmd": {
+                            "description": "Command Register",
+                            "addressOffset": "0x0000",
+                            "fields": {
+                                "data": {
+                                    "description": "FIFO data value transmit/receive",
+                                    "bitOffset": "0",
+                                    "bitWidth": "8"
+                                },
+                                "wr": {
+                                    "description": "Write trigger",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "rd": {
+                                    "description": "Read trigger",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "ss": {
+                                    "description": "SPI chip select. Configure up to 8 chip select ID numbers",
+                                    "bitOffset": "11",
+                                    "bitWidth": "3"
+                                }
+                            }
+                        },
+                        "rsp": {
+                            "description": "Response Register",
+                            "addressOffset": "0x0004",
+                            "fields": {
+                                "fifoAvailability": {
+                                    "description": "FIFO availability",
+                                    "bitOffset": "0",
+                                    "bitWidth": "9",
+                                    "access": "r"
+                                },
+                                "fifoOccupancy": {
+                                    "description": "FIFO Occupancy",
+                                    "bitOffset": "16",
+                                    "bitWidth": "9",
+                                    "access": "r"
+                                }
+                            }
+                        },
+                        "config": {
+                            "description": "Config Register",
+                            "addressOffset": "0x0008",
+                            "fields": {
+                                "cpol": {
+                                    "description": "Clock polarity setting",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "cpha": {
+                                    "description": "Clock phase setting",
+                                    "bitOffset": "1",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "mode": {
+                                    "description": "SPI Mode selection. 0: Full duplex dual line. 1: Half-duplex dual line. 2: Half-duplex quad line",
+                                    "bitOffset": "4",
+                                    "bitWidth": "2",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "interrupt": {
+                            "description": "Interrupt Register",
+                            "addressOffset": "0x000C",
+                            "fields": {
+                                "cmdIntEn": {
+                                    "description": "Command FIFO empty interrupt enable",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1"
+                                },
+                                "rspIntEn": {
+                                    "description": "Read FIFO not empty interrupt enable",
+                                    "bitOffset": "1",
+                                    "bitWidth": "1"
+                                },
+                                "cmdInt": {
+                                    "description": "Command FIFO empty interrupt pending",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1"
+                                },
+                                "rspInt": {
+                                    "description": "Read FIFO not empty interrupt pending",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1"
+                                },
+                                "cmdValid": {
+                                    "description": "Command FIFO is not empty",
+                                    "bitOffset": "16",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                }
+                            }
+                        },
+                        "clkDiv": {
+                            "description": "Clock Divider Register",
+                            "addressOffset": "0x0020",
+                            "fields": {
+                                "clkDiv": {
+                                    "description": "Clock divider, SPI frequency = FCLK / ((clockDivider+1)*2",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "ssSetup": {
+                            "description": "ssSetup Register",
+                            "addressOffset": "0x0024",
+                            "fields": {
+                                "ssSetup": {
+                                    "description": "Time between the chip select enable and the next byte",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "ssHold": {
+                            "description": "ssHold Register",
+                            "addressOffset": "0x0028",
+                            "fields": {
+                                "ssHold": {
+                                    "description": "Time between the last byte transmission and the chip select disable",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "ssDisable": {
+                            "description": "ssDisable Register",
+                            "addressOffset": "0x002C",
+                            "fields": {
+                                "ssDisable": {
+                                    "description": "Time between the chip select disable and the chip select enable",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "ssActiveHigh": {
+                            "description": "ssActiveHigh Register",
+                            "addressOffset": "0x0030",
+                            "fields": {
+                                "ssActiveHigh": {
+                                    "description": "These bits correspond to the hardware SPI chip select. 0: Chip select is active low. 1: Chip select is active high.",
+                                    "bitOffset": "0",
+                                    "bitWidth": "8",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "cmd32_0": {
+                            "description": "cmd32_0 Register. Large data transmit",
+                            "addressOffset": "0x0050",
+                            "fields": {
+                                "data": {
+                                    "description": "Trigger to transmit data. The data width is configurable up to 16 bits.",
+                                    "bitOffset": "0",
+                                    "bitWidth": "16",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "cmd32_1": {
+                            "description": "cmd32_1 Register. Large data transmit",
+                            "addressOffset": "0x0054",
+                            "fields": {
+                                "data": {
+                                    "description": "Trigger to transmit data. The data width is configurable up to 16 bits.",
+                                    "bitOffset": "0",
+                                    "bitWidth": "16",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "rsp32": {
+                            "description": "rsp32 Register. Large data transmit",
+                            "addressOffset": "0x0058",
+                            "fields": {
+                                "data": {
+                                    "description": "Trigger to receive data. The data width is configurable up to 16 bits.",
+                                    "bitOffset": "0",
+                                    "bitWidth": "16",
+                                    "access": "w"
+                                }
+                            }
+                        }
+                    },
+                    "interrupts": {
+                        "spi1": {
+                            "description": "SPI1 Interrupt",
+                            "value": "5"
+                        }
+                    }
+                },
+                "i2c0": {
+                    "description": "Inter-Integrated Circuit (I2C) 0 Peripheral",
+                    "baseAddress": "0xf8017000",
+                    "size": "0x100",
+                    "resetMask": "none",
+                    "groupName": "i2c",
+                    "registers": {
+                        "txData": {
+                            "description": "Transmit Data Register",
+                            "addressOffset": "0x0000",
+                            "fields": {
+                                "value": {
+                                    "description": "Transmit data value",
+                                    "bitOffset": "0",
+                                    "bitWidth": "8",
+                                    "access": "w"
+                                },
+                                "valid": {
+                                    "description": "Transmit data valid bit",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1"
+                                },
+                                "enable": {
+                                    "description": "Transmit data enable",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1"
+                                },
+                                "repeat": {
+                                    "description": "Transmit data repeat bit",
+                                    "bitOffset": "10",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "disableDataConflict": {
+                                    "description": "Disable transmit data conflict",
+                                    "bitOffset": "11",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "txAck": {
+                            "description": "Transmit Acknowledge Register",
+                            "addressOffset": "0x0004",
+                            "fields": {
+                                "value": {
+                                    "description": "Transmit acknowledge bit",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "valid": {
+                                    "description": "Transmit acknowledge valid bit",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1"
+                                },
+                                "enable": {
+                                    "description": "Transmit acknowledge enable",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1"
+                                },
+                                "repeat": {
+                                    "description": "Transmit acknowledge repeat bit",
+                                    "bitOffset": "10",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "disableDataConflict": {
+                                    "description": "Disable acknowledge data conflict",
+                                    "bitOffset": "11",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "rxData": {
+                            "description": "Receive Data Register",
+                            "addressOffset": "0x0008",
+                            "fields": {
+                                "value": {
+                                    "description": "Received data",
+                                    "bitOffset": "0",
+                                    "bitWidth": "8",
+                                    "access": "r"
+                                },
+                                "valid": {
+                                    "description": "Receive data valid",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1"
+                                },
+                                "listen": {
+                                    "description": "Start listen data",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1"
+                                }
+                            }
+                        },
+                        "rxAck": {
+                            "description": "Receive Acknowledge Register",
+                            "addressOffset": "0x000C",
+                            "fields": {
+                                "value": {
+                                    "description": "Received acknowledge bit",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                },
+                                "valid": {
+                                    "description": "Receive acknowledge valid",
+                                    "bitOffset": "8",
+                                    "bitWidth": "1"
+                                },
+                                "listen": {
+                                    "description": "Start listen acknowledge",
+                                    "bitOffset": "9",
+                                    "bitWidth": "1"
+                                }
+                            }
+                        },
+                        "interrupt": {
+                            "description": "Interrupt Register",
+                            "addressOffset": "0x0020",
+                            "fields": {
+                                "rxDataEnable": {
+                                    "description": "Receive data interrupt enable",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1"
+                                },
+                                "rxAckEnable": {
+                                    "description": "Receive acknowledge interrupt enable",
+                                    "bitOffset": "1",
+                                    "bitWidth": "1"
+                                },
+                                "txDataEnable": {
+                                    "description": "Transmit data interrupt enable",
+                                    "bitOffset": "2",
+                                    "bitWidth": "1"
+                                },
+                                "txAckEnable": {
+                                    "description": "Transmit acknowledge interrupt enable",
+                                    "bitOffset": "3",
+                                    "bitWidth": "1"
+                                },
+                                "startEnable": {
+                                    "description": "Start interrupt enable",
+                                    "bitOffset": "4",
+                                    "bitWidth": "1"
+                                },
+                                "restartEnable": {
+                                    "description": "Restart interrupt enable",
+                                    "bitOffset": "5",
+                                    "bitWidth": "1"
+                                },
+                                "endEnable": {
+                                    "description": "End interrupt enable",
+                                    "bitOffset": "6",
+                                    "bitWidth": "1"
+                                },
+                                "dropEnable": {
+                                    "description": "Drop interrupt enable",
+                                    "bitOffset": "7",
+                                    "bitWidth": "1"
+                                },
+                                "clockGenBusyEnable": {
+                                    "description": "Master clock generation interrupt enable",
+                                    "bitOffset": "16",
+                                    "bitWidth": "1"
+                                },
+                                "filterEnable": {
+                                    "description": "Slave address filtering hit interrupt enable",
+                                    "bitOffset": "17",
+                                    "bitWidth": "1"
+                                }
+                            }
+                        },
+                        "interruptClear": {
+                            "description": "Interrupt Clear Register",
+                            "addressOffset": "0x0024",
+                            "fields": {
+                                "startFlag": {
+                                    "description": "Start interrupt flag",
+                                    "bitOffset": "4",
+                                    "bitWidth": "1"
+                                },
+                                "restartFlag": {
+                                    "description": "Restart interrupt flag",
+                                    "bitOffset": "5",
+                                    "bitWidth": "1"
+                                },
+                                "endFlag": {
+                                    "description": "End interrupt flag",
+                                    "bitOffset": "6",
+                                    "bitWidth": "1"
+                                },
+                                "dropFlag": {
+                                    "description": "Drop interrupt flag",
+                                    "bitOffset": "7",
+                                    "bitWidth": "1"
+                                },
+                                "clockGenBusyFlag": {
+                                    "description": "Master clock generation interrupt flag",
+                                    "bitOffset": "16",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "filterFlag": {
+                                    "description": "Slave address filtering hit interrupt",
+                                    "bitOffset": "16",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "sampClkDiv": {
+                            "description": "Sampling Clock Divider Register",
+                            "addressOffset": "0x0028",
+                            "fields": {
+                                "samplingClockDividerWidth": {
+                                    "description": "Clock divider width. Controls the rate at which the I2C controller reads SCL and SDA",
+                                    "bitOffset": "0",
+                                    "bitWidth": "10",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "timeout": {
+                            "description": "Timeout Register",
+                            "addressOffset": "0x002C",
+                            "fields": {
+                                "value": {
+                                    "description": "Inactive timeout setting",
+                                    "bitOffset": "0",
+                                    "bitWidth": "20",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "tsuData": {
+                            "description": "Data Setup Time Register",
+                            "addressOffset": "0x0030",
+                            "fields": {
+                                "value": {
+                                    "description": "Data setup time",
+                                    "bitOffset": "0",
+                                    "bitWidth": "6",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "masterStatus": {
+                            "description": "Master Status Register",
+                            "addressOffset": "0x0040",
+                            "fields": {
+                                "isBusy": {
+                                    "description": "Master busy",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                },
+                                "start": {
+                                    "description": "Master start",
+                                    "bitOffset": "4",
+                                    "bitWidth": "1"
+                                },
+                                "stop": {
+                                    "description": "Master stop",
+                                    "bitOffset": "5",
+                                    "bitWidth": "1"
+                                },
+                                "drop": {
+                                    "description": "Master drop",
+                                    "bitOffset": "6",
+                                    "bitWidth": "1"
+                                }
+                            }
+                        },
+                        "tLow": {
+                            "description": "tLow Register",
+                            "addressOffset": "0x0050",
+                            "fields": {
+                                "value": {
+                                    "description": "SCL low period",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "tHigh": {
+                            "description": "tHigh Register",
+                            "addressOffset": "0x0054",
+                            "fields": {
+                                "value": {
+                                    "description": "SCL high period",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "tBuf": {
+                            "description": "tBuf Register",
+                            "addressOffset": "0x0054",
+                            "fields": {
+                                "value": {
+                                    "description": "Start and stop bus free time",
+                                    "bitOffset": "0",
+                                    "bitWidth": "12",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "filterStatus": {
+                            "description": "Filtering Status Register",
+                            "addressOffset": "0x0080",
+                            "fields": {
+                                "hit_0": {
+                                    "description": "Filtering hit bit 0",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                },
+                                "hit_1": {
+                                    "description": "Filtering hit bit 1",
+                                    "bitOffset": "1",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                }
+                            }
+                        },
+                        "hitContext": {
+                            "description": "Hit Context Register",
+                            "addressOffset": "0x0084",
+                            "fields": {
+                                "rw": {
+                                    "description": "Hit context read",
+                                    "bitOffset": "0",
+                                    "bitWidth": "1",
+                                    "access": "r"
+                                }
+                            }
+                        },
+                        "filterConfig0": {
+                            "description": "Filtering Configuration 0 Register",
+                            "addressOffset": "0x0088",
+                            "fields": {
+                                "value": {
+                                    "description": "Set the filter 0 value",
+                                    "bitOffset": "0",
+                                    "bitWidth": "10",
+                                    "access": "w"
+                                },
+                                "10BitAddr": {
+                                    "description": "Set the filter address to 10 bits wide",
+                                    "bitOffset": "14",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "enable": {
+                                    "description": "Enable filter address 0",
+                                    "bitOffset": "15",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                }
+                            }
+                        },
+                        "filterConfig1": {
+                            "description": "Filtering Configuration 1 Register",
+                            "addressOffset": "0x008C",
+                            "fields": {
+                                "value": {
+                                    "description": "Set the filter 1 value",
+                                    "bitOffset": "0",
+                                    "bitWidth": "10",
+                                    "access": "w"
+                                },
+                                "10BitAddr": {
+                                    "description": "Set the filter address to 10 bits wide",
+                                    "bitOffset": "14",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                },
+                                "enable": {
+                                    "description": "Enable filter address 1",
+                                    "bitOffset": "15",
+                                    "bitWidth": "1",
+                                    "access": "w"
+                                }
+                            }
+                        }
+                    },
+                    "interrupts": {
+                        "i2c0": {
+                            "description": "I2C0 Interrupt",
+                            "value": "8"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
